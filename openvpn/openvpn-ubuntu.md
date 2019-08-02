@@ -40,6 +40,8 @@ drwxrwxr-x 4 supasin supasin  4096 Feb  2 10:41 EasyRSA-Server
 
 ## Build CA
 
+edit file **vars**
+
 ```console
 $ cd EasyRSA-CA/
 
@@ -54,7 +56,11 @@ set_var EASYRSA_REQ_ORG "My Company"
 set_var EASYRSA_REQ_EMAIL   "my@example.com"
 set_var EASYRSA_REQ_OU      "IT"
 ...
+```
 
+Init PKI for CA
+
+```console
 [CA]$ ./easyrsa init-pki
 
 Note: using Easy-RSA configuration from: ./vars
@@ -62,6 +68,8 @@ Note: using Easy-RSA configuration from: ./vars
 init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /home/supasin/EasyRSA-CA/pki
 ```
+
+Build CA
 
 ```console
 [CA]$ ./easyrsa build-ca nopass
@@ -77,7 +85,6 @@ Common Name (eg: your user, host, or server name) [Easy-RSA CA]:My CA
 CA creation complete and you may now import and sign cert requests.
 Your new CA certificate file for publishing is at:
 /home/supasin/EasyRSA-CA/pki/ca.crt
-
 
 [CA]$ ls -l pki/
 total 48
@@ -95,6 +102,8 @@ drwx------ 5 supasin supasin 4096 Aug  2 14:19 revoked
 ```
 
 ## Generate Server Certificate
+
+Init PKI for Server
 
 ```console
 [CA]$ cd ../EasyRSA-Server/
@@ -118,13 +127,19 @@ key: /home/supasin/EasyRSA-Server/pki/private/my-server.key
 
 ```
 
+copy files
+
 ```console
 [Server]$ sudo cp pki/private/my-server.key /etc/openvpn/
 
 [Server]$ cp pki/reqs/my-server.req ../EasyRSA-CA/
 
 [Server]$ cd ../EasyRSA-CA/
+```
 
+import certificate request
+
+```console
 [CA]$ ./easyrsa import-req my-server.req my-server
 
 Note: using Easy-RSA configuration from: ./vars
@@ -133,7 +148,11 @@ Using SSL: openssl OpenSSL 1.1.1  11 Sep 2018
 
 The request has been successfully imported with a short name of: my-server
 You may now use this name to perform signing operations on this request.
+```
 
+sign the request
+
+```console
 [CA]$ ./easyrsa sign-req server my-server
 
 Note: using Easy-RSA configuration from: ./vars
@@ -160,14 +179,17 @@ Write out database with 1 new entries
 Data Base Updated
 
 Certificate created at: /home/supasin/EasyRSA-CA/pki/issued/my-server.crt
+```
 
+copy crt files to /etc/openvpn/
 
+```console
 [CA]$ sudo cp pki/issued/my-server.crt /etc/openvpn/
 
-
 [CA]$ sudo cp pki/ca.crt /etc/openvpn/
-
 ```
+
+Generate DH
 
 ```console
 [Server]$ ./easyrsa gen-dh
@@ -182,6 +204,8 @@ DH parameters of size 2048 created at /home/supasin/EasyRSA-Server/pki/dh.pem
 $ sudo cp pki/dh.pem /etc/openvpn/
 
 ```
+
+Generate ta.key file
 
 ```console
 $ openvpn --genkey --secret ta.key
