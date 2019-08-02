@@ -1,8 +1,8 @@
-# openvpn
+# OpenVPN
 
-## Install openvpn
+## Install OpenVPN
 
-```
+```console
 $ sudo apt install -y openvpn
 
 $ cd /etc/openvpn/
@@ -14,18 +14,17 @@ drwxr-xr-x 2 root root    6 May 14 15:25 server
 -rwxr-xr-x 1 root root 1301 May 14 15:25 update-resolv-conf
 ```
 
-## Download easy-rsa
+## Download and extract EasyRSA
 
-Download EasyRSA 3 from https://github.com/OpenVPN/easy-rsa/releases
+Download EasyRSA 3 from [EasyRSA releases](https://github.com/OpenVPN/easy-rsa/releases)
 
-```
+```console
 $ ls -l EasyRSA-unix-v3.0.6.tgz
 -rw-r--r-- 1 supasin supasin 40840 Aug  2 13:56 EasyRSA-unix-v3.0.6.tgz
 
 $ tar zxf EasyRSA-unix-v3.0.6.tgz
 
 $ ls -l
-total 44
 -rw-r--r-- 1 supasin supasin 40840 Aug  2 13:56 EasyRSA-unix-v3.0.6.tgz
 drwxrwxr-x 4 supasin supasin  4096 Feb  2 10:41 EasyRSA-v3.0.6
 
@@ -34,16 +33,14 @@ $ mv EasyRSA-v3.0.6 EasyRSA-CA
 $ cp -a EasyRSA-CA EasyRSA-Server
 
 $ ls -l
-total 48
 drwxrwxr-x 4 supasin supasin  4096 Feb  2 10:41 EasyRSA-CA
 drwxrwxr-x 4 supasin supasin  4096 Feb  2 10:41 EasyRSA-Server
 -rw-r--r-- 1 supasin supasin 40840 Aug  2 13:56 EasyRSA-unix-v3.0.6.tgz
-
+```
 
 ## Build CA
 
-```
-
+```console
 $ cd EasyRSA-CA/
 
 [CA]$ cp vars.example vars
@@ -64,10 +61,9 @@ Note: using Easy-RSA configuration from: ./vars
 
 init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /home/supasin/EasyRSA-CA/pki
-
 ```
 
-```
+```console
 [CA]$ ./easyrsa build-ca nopass
 
 Note: using Easy-RSA configuration from: ./vars
@@ -98,17 +94,15 @@ drwx------ 5 supasin supasin 4096 Aug  2 14:19 revoked
 -rw------- 1 supasin supasin    3 Aug  2 14:19 serial
 ```
 
-## Build Server Certificate
+## Generate Server Certificate
 
-```
-
+```console
 [CA]$ cd ../EasyRSA-Server/
 
 [Server]$ ./easyrsa init-pki
 
 init-pki complete; you may now create a CA or requests.
 Your newly created PKI dir is: /home/supasin/EasyRSA-Server/pki
-
 
 [Server]$ ./easyrsa gen-req my-server nopass
 
@@ -122,11 +116,9 @@ Keypair and certificate request completed. Your files are:
 req: /home/supasin/EasyRSA-Server/pki/reqs/my-server.req
 key: /home/supasin/EasyRSA-Server/pki/private/my-server.key
 
-
-
 ```
 
-```
+```console
 [Server]$ sudo cp pki/private/my-server.key /etc/openvpn/
 
 [Server]$ cp pki/reqs/my-server.req ../EasyRSA-CA/
@@ -142,13 +134,11 @@ Using SSL: openssl OpenSSL 1.1.1  11 Sep 2018
 The request has been successfully imported with a short name of: my-server
 You may now use this name to perform signing operations on this request.
 
-
 [CA]$ ./easyrsa sign-req server my-server
 
 Note: using Easy-RSA configuration from: ./vars
 
 Using SSL: openssl OpenSSL 1.1.1  11 Sep 2018
-
 
 You are about to sign the following certificate.
 Please check over the details shown below for accuracy. Note that this request
@@ -179,9 +169,7 @@ Certificate created at: /home/supasin/EasyRSA-CA/pki/issued/my-server.crt
 
 ```
 
-
-```
-
+```console
 [Server]$ ./easyrsa gen-dh
 
 Using SSL: openssl OpenSSL 1.1.1  11 Sep 2018
@@ -195,17 +183,15 @@ $ sudo cp pki/dh.pem /etc/openvpn/
 
 ```
 
-```
-
+```console
 $ openvpn --genkey --secret ta.key
 
 $ sudo cp ta.key /etc/openvpn/
-
 ```
 
-## configure openvpn
+## Configure OpenVPN Server
 
-```
+```console
 $ cd /etc/openvpn/
 
 $ ls -l
@@ -250,9 +236,9 @@ explicit-exit-notify 1
 
 ```
 
-## start openvpn server
+## Start OpenVPN Server
 
-```
+```console
 $ sudo systemctl start openvpn@my-server
 ```
 
