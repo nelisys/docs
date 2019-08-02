@@ -25,3 +25,7 @@ $ diskutil eject /dev/disk2
 Disk /dev/disk2 ejected
 ```
 
+```console
+$ ssh -l pi 192.168.1.5
+pi@192.168.1.5's password:
+```

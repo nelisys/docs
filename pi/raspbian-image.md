@@ -18,6 +18,8 @@ Run checksum command and verify with the value on web site
 
 Example: checksum for Raspbian Buster Lite Version: July 2019 on web site
 
+![Raspbian Buster Lite](raspbian-buster-lite-information.png)
+
 SHA-256: 9e5cf24ce483bb96e7736ea75ca422e3560e7b455eee63dd28f66fa1825db70e
 
 On MacOS
@@ -73,4 +75,26 @@ eject the card
 ```console
 $ diskutil eject /dev/disk2
 Disk /dev/disk2 ejected
+```
+
+Insert SD card to Pi, and power up.
+
+Login prompt after boot success.
+
+```
+Raspbian GNU/Linux 10 raspberrypi tty1
+
+raspberrypi login: pi
+Password:
+
+Linux raspberrypi 4.19.57-v7+ #1244 SMP Thu Jul 4 18:45:25 BST 2019 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+
+pi@raspberrypi:~ $
 ```
