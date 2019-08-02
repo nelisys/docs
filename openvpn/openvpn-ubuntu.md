@@ -72,7 +72,7 @@ Using SSL: openssl OpenSSL 1.1.1  11 Sep 2018
 Generating RSA private key, 2048 bit long modulus (2 primes)
 ...
 
-Common Name (eg: your user, host, or server name) [Easy-RSA CA]:My CA
+Common Name (eg: your user, host, or server name) [Easy-RSA CA]:**My CA**
 
 CA creation complete and you may now import and sign cert requests.
 Your new CA certificate file for publishing is at:
@@ -244,5 +244,5 @@ $ sudo systemctl start openvpn@my-server
 
 ## References
 
-[How To Set Up an OpenVPN Server on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-18-04)
+* [How To Set Up an OpenVPN Server on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-18-04)
 
