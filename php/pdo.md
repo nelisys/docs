@@ -12,6 +12,8 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```php
 $stmt = $db->query("SELECT * FROM students");
 
+echo $stmt->rowCount() . "\n";
+
 while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
     // ex: $row->id
 }
