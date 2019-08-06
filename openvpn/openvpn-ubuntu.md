@@ -266,6 +266,20 @@ explicit-exit-notify 1
 $ sudo systemctl start openvpn@my-server
 ```
 
+## Generate Client Keys
+
+```console
+$ cd EasyRSA-CA/
+
+$ ./easyrsa gen-req my-server nopass
+...
+Common Name (eg: your user, host, or server name) [my-server]:
+
+Keypair and certificate request completed. Your files are:
+req: /home/supasin/EasyRSA-Server/pki/reqs/my-server.req
+key: /home/supasin/EasyRSA-Server/pki/private/my-server.key
+```
+
 ## References
 
 * [How To Set Up an OpenVPN Server on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-18-04)
