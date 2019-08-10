@@ -18,7 +18,7 @@ INSERT INTO students VALUES (3, 'bob');
 INSERT INTO students VALUES (4, 'Bill');
 ```
 
-```sqlite
+```sql
 sqlite> SELECT * FROM students ORDER BY name;
 2|Adam
 4|Bill
@@ -32,7 +32,7 @@ sqlite> SELECT * FROM students ORDER BY name DESC;
 2|Adam
 ```
 
-```console
+```sql
 sqlite> SELECT * FROM students ORDER BY name COLLATE NOCASE;
 2|Adam
 1|alice
