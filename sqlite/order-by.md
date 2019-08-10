@@ -18,7 +18,7 @@ INSERT INTO students VALUES (3, 'bob');
 INSERT INTO students VALUES (4, 'Bill');
 ```
 
-```console
+```sqlite
 sqlite> SELECT * FROM students ORDER BY name;
 2|Adam
 4|Bill
