@@ -4,5 +4,6 @@
 
 ## post installation
 
-- [apt update](apt-update.md)
+- [update software](apt-update.md)
+- [set timezone](set-timezone.md)
 
