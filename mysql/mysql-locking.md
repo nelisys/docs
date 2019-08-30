@@ -2,8 +2,6 @@
 
 ## prepare the table
 
-prepare test table
-
 ```mysql
 CREATE TABLE students (
   id  INT AUTO_INCREMENT,
@@ -17,8 +15,6 @@ INSERT INTO students VALUES (NULL, 'Chris');
 ```
 
 ## LOCK READ
-
----
 
 On the 1st session
 
@@ -111,7 +107,7 @@ mysql-2nd> INSERT INTO students VALUES (NULL, 'Eric');
 
 ---
 
-back to 1st session
+back to the 1st session
 
 ```mysql
 mysql-1st> SELECT * FROM students;
@@ -132,7 +128,7 @@ mysql-1st> UNLOCK TABLES;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-the data inserted by the 2nd session will be returned
+the 2nd session will be returned to prompt, and the result also show the inserted data
 
 ```mysql
 root@test> SELECT * FROM students;
