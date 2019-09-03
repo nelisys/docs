@@ -10,7 +10,7 @@
 const chart = new Chart(document.getElementById('chart').getContext('2d'), {
     type: 'line',
     data: {
-        labels: ['January', 'February', 'March'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
 
         datasets: [
             {
@@ -19,7 +19,7 @@ const chart = new Chart(document.getElementById('chart').getContext('2d'), {
                 borderColor: 'red',
                 fill: false,
                 data: [
-                    12, 20, 15,
+                    50, 30, 15, 70, 30, 80,
                 ],
             }
         ],
@@ -28,7 +28,36 @@ const chart = new Chart(document.getElementById('chart').getContext('2d'), {
         responsive: true,
         legend: {
             display: true,
+            position: 'top',
         },
+        title: {
+            display: true,
+            text: 'Line Chart Title',
+        },
+        scales: {
+            xAxes: [
+                {
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                       labelString: 'Month',
+                    }
+                }
+            ],
+            yAxes: [
+            {
+                   display: true,
+                   scaleLabel: {
+                       display: true,
+                       labelString: 'MB',
+                   },
+                   ticks: {
+                       min: 0,
+                       max: 100,
+                   }
+               }
+           ]
+        }
     },            
 });
 </script>
