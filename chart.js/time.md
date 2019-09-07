@@ -76,3 +76,87 @@ const chart = new Chart(document.getElementById('chart').getContext('2d'), {
 });
 </script>
 ```
+
+## daily
+
+```javascript
+        scales: {
+            xAxes: [
+                {
+                    type: 'time',
+                    time: {
+                        unit: 'hour',
+                        stepSize: 1,
+                        min: new Date('2019-09-07 00:00'),
+                        max: new Date('2019-09-07 24:00'),
+                        displayFormats: {
+                            hour: 'HH:00'
+                        },
+                        tooltipFormat: 'D MMM YYYY HH:mm',
+                    },
+                }
+            ],
+```
+
+## weekly
+
+```javascript
+            scales: {
+                xAxes: [
+                    {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            stepSize: 1,
+                            min: new Date('2019-09-01 00:00'),
+                            max: new Date('2019-09-07 24:00'),
+                            displayFormats: {
+                                day: 'D MMM YYYY'
+                            },
+                            tooltipFormat: 'D MMM YYYY HH:mm',
+                        },
+                    }
+                ],
+```
+
+## monthly
+
+```javascript
+            scales: {
+                xAxes: [
+                    {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            stepSize: 1,
+                            min: new Date('2019-09-01 00:00'),
+                            max: new Date('2019-09-30 24:00'),
+                            displayFormats: {
+                                day: 'D',
+                            },
+                            tooltipFormat: 'D MMM YYYY HH:mm',
+                        },
+                    }
+                ],
+```
+
+## yearly
+
+```javascript
+            scales: {
+                xAxes: [
+                    {
+                        type: 'time',
+                        time: {
+                            unit: 'month',
+                            stepSize: 1,
+                            min: new Date('2019-01-01 00:00'),
+                            max: new Date('2019-12-31 24:00'),
+                            displayFormats: {
+                                month: 'MMM YYYY',
+                            },
+                            tooltipFormat: 'D MMM YYYY HH:mm',
+                        },
+                    }
+                ],
+```
