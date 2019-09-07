@@ -3,15 +3,15 @@
 format ticks
 
 ```javascript
-               yAxes: [
+            yAxes: [
                 {
-                       ticks: {
-                            min: 0,
-                            max: 100,
-                            callback: function(value, index, values) {
-                                return '$' + value;
-                            },
-                       }
-                   }
-               ]
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        callback: function(value, index, values) {
+                            return '$' + value;
+                        },
+                    }
+                }
+            ]
 ```
