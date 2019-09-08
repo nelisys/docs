@@ -21,3 +21,15 @@ pi@raspberrypi:~ $ sudo apt update
 pi@raspberrypi:~ $ sudo apt -y upgrade
 ```
 
+## Set timezone
+
+```console
+pi@raspberrypi:~ $ sudo timedatectl set-timezone Asia/Bangkok
+```
+
+## Set hostname
+
+```console
+sudo hostnamectl set-hostname iot-01
+```
+

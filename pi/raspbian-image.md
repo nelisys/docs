@@ -47,11 +47,13 @@ total 5132944
 Insert SD Card
 
 ```console
-$ diskutil list
 
-/dev/disk2 (internal, physical):
+$ diskutil list
+...
+/dev/disk2 (external, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:     FDisk_partition_scheme                        *15.9 GB    disk2
+   1:             Windows_FAT_32 NO NAME                 15.9 GB    disk2s1
 ```
 
 unmount the card
