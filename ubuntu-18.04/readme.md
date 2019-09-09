@@ -8,4 +8,5 @@
 - [change hostname](hostname.md)
 - [set timezone](set-timezone.md)
 - [config default editor](config-default-editor.md)
+- [config network](netplan.md)
 - [install util packages](util.md)
