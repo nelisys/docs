@@ -16,6 +16,13 @@ Press <enter> to keep the current choice[*], or type selection number: 3
 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in manual mode
 ```
 
+or
+
+```console
+$ sudo update-alternatives --set editor /usr/bin/vim.basic
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in manual mode
+```
+
 ## set editor for crontab
 
 ```console
