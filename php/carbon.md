@@ -16,3 +16,4 @@ echo $today->endOfMonth()->format('Y-m-d') . "\n";
 | ------ | ---------- |
 | Y-m-d  | 2019-08-07 |
 | j M Y  | 7 Aug 2019 |
+| H:i:s  | 14:33:52   |
