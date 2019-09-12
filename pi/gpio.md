@@ -18,12 +18,17 @@ $ sudo pip3 install RPi.GPIO
 
 ```python
 import RPi.GPIO as GPIO
+import time
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-GPIO.setup(Relay[i], GPIO.OUT)
-GPIO.output(Relay[i], GPIO.HIGH)
+RELAY_NUMBER = 5
+
+GPIO.setup(RELAY_NUMBER, GPIO.OUT)
+GPIO.output(RELAY_NUMBER, GPIO.HIGH)
+time.sleep(1)
+GPIO.output(RELAY_NUMBER, GPIO.LOW)
 
 GPIO.cleanup()
 ```
