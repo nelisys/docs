@@ -10,7 +10,9 @@ values = {'name': 'abc'}
 data = urllib.parse.urlencode(values)
 data = data.encode('ascii') # data should be bytes
 
-req = urllib.request.Request(url, data)
+headers={'X-Requested-With': 'XMLHttpRequest'}
+
+req = urllib.request.Request(url, data, headers)
 response = urllib.request.urlopen(req)
 
 print(response.code)
