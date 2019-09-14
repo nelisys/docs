@@ -14,6 +14,7 @@ moment().format('YYYY-MM-DD HH:MM:ss');
 | ---------- | ---------- |
 | YYYY-MM-DD | 2019-08-07 |
 | D MMM YYYY | 7 Aug 2019 |
+| ddd        | Sun        |
 
 ## convert
 
@@ -27,5 +28,12 @@ moment.unix(timestamp);
 
 ```javascript
 moment().toNow(true);
+```
+
+## add, subtract
+
+```javascript
+moment().subtract(1, 'day');
+moment().add(1, 'day');
 ```
 
