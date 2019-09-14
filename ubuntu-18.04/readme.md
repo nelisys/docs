@@ -10,3 +10,6 @@
 - [config default editor](config-default-editor.md)
 - [config network](netplan.md)
 - [install util packages](util.md)
+
+## system administration
+- [su command](su.md)
