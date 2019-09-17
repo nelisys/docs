@@ -112,3 +112,11 @@ find with condition
 { "_id" : ObjectId("5d53a25bb152d7bc83744ec5"), "name" : "Alice New", "status" : "A" }
 { "_id" : ObjectId("5d53a261b152d7bc83744ec7"), "name" : "Chris", "status" : "D" }
 ```
+
+## index
+
+create `index`
+
+```
+> db.students.createIndex({name: -1})
+```
