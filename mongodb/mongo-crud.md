@@ -72,6 +72,8 @@ find with condition
 { "_id" : ObjectId("5d513d350584f63efd88ceb3"), "name" : "Bob", "status" : "A" }
 ```
 
+```
+
 ## update
 
 ```
@@ -120,3 +122,25 @@ create `index`
 ```
 > db.students.createIndex({name: -1})
 ```
+
+## find regex
+
+```
+> db.students.find(
+    {
+        name: {
+            $regex: /alice/i
+        }
+    }
+)
+
+## find in array
+
+```
+> db.students.find(
+    {
+        name: {
+            $in: ["Bob", "Chris"],
+        }
+    }
+)
