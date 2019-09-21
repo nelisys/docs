@@ -72,8 +72,6 @@ find with condition
 { "_id" : ObjectId("5d513d350584f63efd88ceb3"), "name" : "Bob", "status" : "A" }
 ```
 
-```
-
 ## update
 
 ```
