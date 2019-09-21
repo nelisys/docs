@@ -131,6 +131,7 @@ create `index`
         }
     }
 )
+```
 
 ## find in array
 
@@ -142,3 +143,4 @@ create `index`
         }
     }
 )
+```
