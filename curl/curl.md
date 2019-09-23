@@ -20,3 +20,14 @@ $ ls -1
 index.html
 ```
 
+## basic authentication
+
+```console
+$ curl --user username:password http://www.example.com/api
+```
+
+## header
+
+```console
+$ curl --header 'X-key: value'
+```
