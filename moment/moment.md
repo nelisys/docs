@@ -1,5 +1,11 @@
 # moment
 
+## parse
+
+```javascript
+moment("2019-09-24", "YYYY-MM-DD");
+```
+
 ## format
 
 format()
