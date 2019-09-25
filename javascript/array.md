@@ -36,3 +36,26 @@ let students = ['Dan', 'Alice', 'Bob', 'Chris'];
 students.sort();
 // [ 'Alice', 'Bob', 'Chris', 'Dan' ]
 ```
+
+## indexOf()
+
+```javascript
+let students = ['Alice', 'Bob', 'Chris', 'Dan'];
+
+console.log(students.indexOf('Chris'));
+// 2
+
+console.log(students.indexOf('Eric'));
+// -1
+```
+
+## splice
+
+```javascript
+let students = ['Alice', 'Bob', 'Chris', 'Dan'];
+
+students.splice(2, 1);
+
+console.log(students);
+// [ 'Alice', 'Bob', 'Dan' ]
+```
