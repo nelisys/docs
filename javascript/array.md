@@ -59,3 +59,13 @@ students.splice(2, 1);
 console.log(students);
 // [ 'Alice', 'Bob', 'Dan' ]
 ```
+
+## concat
+
+```javascript
+let a = [1, 2, 3];
+let b = [4, 5];
+
+console.log(a.concat(b));
+// [ 1, 2, 3, 4, 5 ]
+```
