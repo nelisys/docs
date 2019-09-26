@@ -29,3 +29,19 @@
     }
 </script>
 ```
+
+## v-bind:data
+
+```html
+<input type="checkbox"
+    v-bind:data-hour="21"
+    @click="onClick">
+
+<script>
+    methods: {
+        onClick() {
+            let hour = event.target.dataset.hour;
+        }
+    }
+</script>
+```
