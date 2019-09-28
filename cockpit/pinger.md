@@ -6,7 +6,7 @@ $ mkdir -p ~/.local/share/cockpit/pinger
 $ cd ~/.local/share/cockpit/pinger/
 ```
 
-$ vi manifest.json
+## manifest.json
 
 ```json
 {
@@ -21,7 +21,7 @@ $ vi manifest.json
 }
 ```
 
-$ vi pinger.html
+## pinger.html
 
 ```html
 <head>
@@ -52,7 +52,7 @@ $ vi pinger.html
 </html>
 ```
 
-$ vi pinger.js
+## pinger.js
 
 ```javascript
 var address = document.getElementById("address");
@@ -89,6 +89,8 @@ function ping_output(data) {
 // Send a 'init' message.  This tells the tests that we are ready to go
 cockpit.transport.wait(function() { });
 ```
+
+## list cockpit packages
 
 ```console
 $ cockpit-bridge --packages
