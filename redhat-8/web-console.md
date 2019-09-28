@@ -3,7 +3,7 @@
 ## install
 
 ```console
-$ sudo yum install cockpit
+$ sudo yum install -y cockpit
 
 $ sudo systemctl enable --now cockpit.socket
 ```
