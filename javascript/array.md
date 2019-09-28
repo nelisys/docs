@@ -1,5 +1,24 @@
 # JavaScript Array
 
+## create array
+
+let a = Array(3);
+// [ <3 empty items> ]
+
+## fill array
+
+a.fill(1);
+// [ 1, 1, 1 ]
+
+## map
+
+```javascript
+let a = [1, 2, 3];
+
+a.map(x => x * 2)
+// [ 2, 4, 6 ]
+```
+
 ## filter
 
 ```javascript
