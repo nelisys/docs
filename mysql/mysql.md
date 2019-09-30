@@ -16,3 +16,13 @@ mysql> ALTER TABLE students DROP FOREIGN KEY students_room_id_foreign;
 mysql> ALTER TABLE students DROP KEY students_room_id_foreign;
 ```
 
+## CONCAT
+
+```sql
+mysql> SELECT CONCAT('a', ':', 'b');
++-----------------------+
+| CONCAT('a', ':', 'b') |
++-----------------------+
+| a:b                   |
++-----------------------+
+```
