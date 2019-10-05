@@ -7,6 +7,9 @@ redis-cli 5.0.5
 
 ```
 $ redis-cli
+127.0.0.1:6379> FLUSHALL
+OK
+
 127.0.0.1:6379> KEYS *
 (empty list or set)
 
@@ -27,3 +30,10 @@ OK
 
 127.0.0.1:6379>
 ```
+
+## prefix
+
+- L = List, Array
+- S = Set, Unique Array
+- Z = Sorted Set, Sorted Unique Array
+- H = Hash, Object, Associate Array
