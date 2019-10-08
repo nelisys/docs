@@ -32,3 +32,9 @@ mysql> SELECT CONCAT('a', ':', 'b');
 ```sql
 mysql> SELECT * FROM students WHERE id IN (1, 3);
 ```
+
+## open editor to create the query
+
+```sql
+mysql> edit
+```
