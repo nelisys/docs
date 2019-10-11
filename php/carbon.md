@@ -1,5 +1,13 @@
 # carbon
 
+## install
+
+```
+$ composer require nesbot/carbon
+```
+
+## week
+
 ```php
 $today = \Carbon\CarbonImmutable::now();
 
@@ -22,4 +30,11 @@ echo $today->endOfMonth()->format('Y-m-d') . "\n";
 diffForHumans();
 ```
 
+## is methods
 
+```php
+$today = Carbon::now();
+
+$today->isToday();
+// true
+```
