@@ -13,7 +13,7 @@ $ sudo systemctl enable --now cockpit.socket
 ```console
 $ sudo firewall-cmd --add-service=cockpit --permanent
 
-$ firewall-cmd --reload
+$ sudo firewall-cmd --reload
 ```
 
 ## web
