@@ -88,3 +88,12 @@ let b = [4, 5];
 console.log(a.concat(b));
 // [ 1, 2, 3, 4, 5 ]
 ```
+
+## explode
+
+```javascript
+let a = '1 2 3';
+
+a.split(' ');
+// [1, 2, 3];
+```
