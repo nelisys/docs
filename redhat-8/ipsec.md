@@ -154,5 +154,33 @@ also start on the right host
 ```
 $ sudo tail /var/log/secure
 Oct 15 10:53:13 rh8 pluto[6394]: "mytunnel" #5: negotiated connection [192.168.56.1-192.168.56.1:0-65535 0] -> [192.168.56.2-192.168.56.210-65535 0]
-Oct 15 10:53:13 rh8 pluto[6394]: "mytunnel" #5: STATE_V2_IPSEC_R: IPsec SA established tunnel mode {ESP=>0x7fb910e5 <0x10eda1fd xfrm=AES_GCM_16_256-NONE NATOA=none NATD=none DPD=passive}
+Oct 15 10:53:13 rh8 pluto[6394]: "mytunnel" #5: STATE_V2_IPSEC_R: IPsec SA established tunnel mode {ESP=>0x7fb910e5 <0x10eda1fd xfrm=AES_GCM_16_256-NONE NATOA=none NATD=none DPD=passive} ```
+
+## certificate
+
+```console
+$ certutil -S -x -n "ExampleCA" -s "O=Example,CN=MyCA" -k rsa -v 120 -d sql:/etc/ipsec.d -t "CT,," -2
+```
+
+## more
+
+```console
+$ sudo ipsec showhostkey --list
+< 1> RSA keyid: AwEAAe6Pk ckaid: b49ae1879f8b7f40c74c79cfe2e75ff3f90b88b2
+```console
+
+on the left
+```
+$ sudo ipsec whack --trafficstatus
+006 #2: "mytunnel", type=ESP, add_time=1571117278, inBytes=924, outBytes=924, id='@east'
+```
+
+on the right
+```
+$ sudo ipsec whack --trafficstatus
+006 #5: "mytunnel", type=ESP, add_time=1571117278, inBytes=924, outBytes=924, id='@west'
+```
+
+```
+$ sudo ipsec status
 ```
