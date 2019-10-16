@@ -97,3 +97,9 @@ let a = '1 2 3';
 a.split(' ');
 // [1, 2, 3];
 ```
+
+split by multiple spaces
+
+```javascript
+a.split(/\s+/);
+```
