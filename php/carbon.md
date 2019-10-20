@@ -6,6 +6,20 @@
 $ composer require nesbot/carbon
 ```
 
+## get day
+
+```php
+Carbon::today();
+// Carbon\Carbon @1571504400^ {#3251
+//   date: 2019-10-20 00:00:00.0 Asia/Bangkok (+07:00)
+// }
+
+Carbon::yesterday();
+// Carbon\Carbon @1571418000^ {#414
+//   date: 2019-10-19 00:00:00.0 Asia/Bangkok (+07:00)
+// }
+```
+
 ## week
 
 ```php
