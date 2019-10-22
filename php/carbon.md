@@ -52,3 +52,9 @@ $today = Carbon::now();
 $today->isToday();
 // true
 ```
+
+## add days
+
+```php
+Carbon::now()->addDays(-7)]
+```
