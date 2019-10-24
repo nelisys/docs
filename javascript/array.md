@@ -47,13 +47,44 @@ students.includes('Dan');
 // false
 ```
 
-## sort
+## sort array
 
 ```javascript
 let students = ['Dan', 'Alice', 'Bob', 'Chris'];
 
 students.sort();
 // [ 'Alice', 'Bob', 'Chris', 'Dan' ]
+```
+
+## sort array of object
+
+```javascript
+let students = [
+    {name: 'Bob'},
+    {name: 'Dan'},
+    {name: 'Eric'},
+    {name: 'Alice'},
+    {name: 'Chris'},
+];
+
+students.sort((b, a) => {
+    if (a.name < b.name) {
+        return 1;
+    }
+
+    if (a.name > b.name) {
+        return -1;
+    }
+
+    return 0;
+});
+
+// students
+//     {name: "Alice"}
+//     {name: "Bob"}
+//     {name: "Chris"}
+//     {name: "Dan"}
+//     {name: "Eric"}
 ```
 
 ## indexOf()
