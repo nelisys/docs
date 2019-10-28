@@ -31,3 +31,9 @@ $ curl --user username:password http://www.example.com/api
 ```console
 $ curl --header 'X-key: value'
 ```
+
+## ssl
+
+```console
+$ curl --insecure https://192.168.1.1/
+```
