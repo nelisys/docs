@@ -2,7 +2,7 @@
 
 ## toLocaleString()
 
-```
+```javascript
 (1234.567).toLocaleString('en');
 // 1,234.567
 
