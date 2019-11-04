@@ -1,4 +1,4 @@
-# MySQL Locking
+# MySQL LOCK READ
 
 ## prepare the table
 
@@ -142,4 +142,3 @@ root@test> SELECT * FROM students;
 +----+-------+
 4 rows in set (0.00 sec)
 ```
-
