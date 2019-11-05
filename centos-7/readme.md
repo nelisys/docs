@@ -1,4 +1,4 @@
-# CentOS 8
+# CentOS 7
 
 ## installation
 
