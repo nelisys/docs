@@ -107,3 +107,8 @@ drwxr-xr-x  3 supasin  staff  96 Aug 15 13:39 dump
 $ mongorestore
 ```
 
+restore collection
+
+```console
+$ mongorestore --db inventory --collection products products.bson
+```
