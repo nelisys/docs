@@ -37,8 +37,22 @@ console.log(students.filter(student => {
 
 ## in array
 
+### indexOf() ES5
+
 ```javascript
-let students = ['Alice', 'Bob', 'Chris'];
+let students = ['Alice', 'Bob', 'Chris', 'Dan'];
+
+console.log(students.indexOf('Chris'));
+// 2
+
+console.log(students.indexOf('Eric'));
+// -1
+```
+
+### includes() ES7
+
+```javascript
+let students = ['Alice', 'Bob', 'Chris', 'Dan'];
 
 students.includes('Bob');
 // true
@@ -85,18 +99,6 @@ students.sort((b, a) => {
 //     {name: "Chris"}
 //     {name: "Dan"}
 //     {name: "Eric"}
-```
-
-## indexOf()
-
-```javascript
-let students = ['Alice', 'Bob', 'Chris', 'Dan'];
-
-console.log(students.indexOf('Chris'));
-// 2
-
-console.log(students.indexOf('Eric'));
-// -1
 ```
 
 ## splice
