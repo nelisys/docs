@@ -61,6 +61,7 @@ find
 ```
 
 find with condition
+
 ```
 > db.students.find(
     {
@@ -70,6 +71,23 @@ find with condition
 
 { "_id" : ObjectId("5d513cad0584f63efd88ceb0"), "name" : "Alice", "status" : "A" }
 { "_id" : ObjectId("5d513d350584f63efd88ceb3"), "name" : "Bob", "status" : "A" }
+```
+
+find with projection
+
+```
+> db.students.find(
+    {
+        status: "A"
+    },
+    {
+        _id: 1,
+        name: 1,
+    }
+)
+
+{ "_id" : ObjectId("5d513cad0584f63efd88ceb0"), "name" : "Alice" }
+{ "_id" : ObjectId("5d513d350584f63efd88ceb3"), "name" : "Bob" }
 ```
 
 ## update
