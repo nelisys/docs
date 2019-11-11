@@ -58,3 +58,9 @@ $today->isToday();
 ```php
 Carbon::now()->addDays(-7)]
 ```
+
+## diff
+
+```php
+diffInHours();
+```

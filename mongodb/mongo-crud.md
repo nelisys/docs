@@ -162,3 +162,9 @@ create `index`
     }
 )
 ```
+
+## count
+
+```
+> db.students.count({})
+```
