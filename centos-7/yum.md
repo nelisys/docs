@@ -1,10 +1,14 @@
 # yum
 
 ```console
-$ yum whatprovides 'ifconfig'
-Last metadata expiration check: 0:02:35 ago on Sat 12 Oct 2019 09:35:54 AM +07.
-net-tools-2.0-0.51.20160912git.el8.x86_64 : Basic networking tools
-Repo        : ol8_baseos_latest
+$ yum whatprovides '/sbin/ifconfig'
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.hosting.in.th
+ * extras: mirrors.163.com
+ * updates: mirrors.hosting.in.th
+net-tools-2.0-0.25.20131004git.el7.x86_64 : Basic networking tools
+Repo        : base
 Matched from:
-Filename    : /usr/sbin/ifconfig
+Filename    : /sbin/ifconfig
 ```
