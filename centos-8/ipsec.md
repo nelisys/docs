@@ -39,7 +39,7 @@ total 24
 -rw-r--r--. 1 root root 728 May 25 10:56 private-or-clear
 ```
 
-init NSS database
+## init NSS database
 
 note: just enter for the password prompt
 
