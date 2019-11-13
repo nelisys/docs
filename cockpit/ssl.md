@@ -1,4 +1,4 @@
-# cockpit
+# ssl configuration
 
 allow http connection
 
