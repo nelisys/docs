@@ -5,6 +5,9 @@
 ```
 > use testing
 switched to db testing
+
+> db
+testing
 ```
 
 ## insert
