@@ -1,5 +1,23 @@
 # phpunit
 
+## WithFaker
+
+```php
+use Illuminate\Foundation\Testing\WithFaker;
+
+class ExampleTest extends TestCase
+{
+    use WithFaker;
+
+    /** @test */
+    public function test_something()
+    {
+        $fake_name = $this->faker->name;
+        ...
+    }
+...
+```
+
 ## mark test
 
 ```php
