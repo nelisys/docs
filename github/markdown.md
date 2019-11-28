@@ -2,14 +2,8 @@
 
 ## code with line numbers
 
-```php {.line-numbers}
-class MyClass
-{
-    public $my_property;
-
-    public function my_method()
-    {
-        //
-    }
+```javascript {.line-numbers}
+function add(x, y) {
+    return x + y;
 }
 ```
