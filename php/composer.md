@@ -69,6 +69,8 @@ Package operations: 33 installs, 0 updates, 0 removals
 ...
 ```
 
+Both `carbon` and `phpunit` will be installed.
+
 ## install --no-dev
 
 In **staging** or **production** environments, install only `require` packages.
@@ -93,6 +95,8 @@ Updating dependencies
 Package operations: 4 installs, 0 updates, 0 removals
 ...
 ```
+
+Only `carbon` will be installed.
 
 ## proxy
 
