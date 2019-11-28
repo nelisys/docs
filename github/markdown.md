@@ -1,28 +1,9 @@
 # markdown
 
-## quoted
-> function add(x, y) {
->     ***return*** x + y;
-> }
+## code
 
-## preformatted
-
-  function add(x, y) {
-      ***return*** x + y;
-  }
-
-## code block
-
----
+```javascript
 function add(x, y) {
-    ***return*** x + y;
-}
----
-
-## syntax
-
-```
-function add(x, y) {
-    ***return*** x + y;
+    return x + y;
 }
 ```
