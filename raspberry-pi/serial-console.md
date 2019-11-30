@@ -1,12 +1,12 @@
 # Serial Console
 
-Pi's Serial ports use 0V and 3.3V logic levels.
+Pi Serial ports use 0V and 3.3V logic levels.
 
-Note: tested on version `2019-09-26-raspbian-buster-lite.img`
+Note: Below tested on version `2019-09-26-raspbian-buster-lite.img`
 
 ## Wiring
 
-cross connect between TX and RX between two Pi
+Use the cable to cross connect TX and RX ports between two Pi
 
 ```
  /--------------\        /--------------\
@@ -103,11 +103,17 @@ root       499     1  0 09:16 tty1     00:00:00 /sbin/agetty -o -p -- \u --nocle
 
 ## Pi : run minicom
 
+To run `minicom` on Pi, we have to disable serial console
+
 ```console
 pi@pi2:~ $ ps -ef | grep getty
 root       360     1  0 08:31 tty1     00:00:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
 root       720     1  0 09:03 ?        00:00:00 /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyAMA0 vt220
 ```
+
+Two methods to disable serial console
+- run `raspi-config`
+- manually edit file `/boot/cmdline.txt`
 
 ```console
 $ sudo raspi-config
@@ -129,12 +135,13 @@ $ sudo vi /boot/cmdline.txt
 console=tty1 root=PARTUUID=6c58....-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
 ```
 
+don't forget to run `sync` to flush all buffer into the SD Card
+
 Reboot the Pi.
 
 ```console
 $ sudo apt install -y minicom
 ```
-
 
 ```console
 $ minicom -b 115200 -o -D /dev/serial0
