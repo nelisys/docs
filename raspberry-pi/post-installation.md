@@ -2,15 +2,13 @@
 
 ## Change User Password
 
-Run raspi-config command:
-- select "Change User Password"
-- type the new password
-
 ```console
-pi@raspberrypi:~ $ sudo raspi-config
-...
+$ passwd
+Changing password for pi.
+Current password:
 New password:
 Retype new password:
+passwd: password updated successfully
 ```
 
 ## Update the software
@@ -25,11 +23,5 @@ pi@raspberrypi:~ $ sudo apt -y upgrade
 
 ```console
 pi@raspberrypi:~ $ sudo timedatectl set-timezone Asia/Bangkok
-```
-
-## Set hostname
-
-```console
-sudo hostnamectl set-hostname iot-01
 ```
 

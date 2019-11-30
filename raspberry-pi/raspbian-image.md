@@ -66,7 +66,7 @@ Unmount of all volumes on disk2 was successful
 Use dd command to write image to SD card, (take about 10 minutes)
 
 ```console
-$ sudo dd bs=1m if=2019-07-10-raspbian-buster-lite.img of=/dev/disk2
+$ sudo dd if=2019-07-10-raspbian-buster-lite.img of=/dev/disk2 bs=1m
 2096+0 records in
 2096+0 records out
 2197815296 bytes transferred in 606.278478 secs (3625092 bytes/sec)
@@ -80,6 +80,8 @@ Disk /dev/disk2 ejected
 ```
 
 Insert SD card to Pi, and power up.
+
+Note: For the first time, boot may take a long time to expand all of the SD card storage available to the OS.
 
 Login prompt after boot success.
 
@@ -99,4 +101,13 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 
 pi@raspberrypi:~ $
+```
+
+```console
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID:    Raspbian
+Description:    Raspbian GNU/Linux 10 (buster)
+Release:    10
+Codename:    buster
 ```
