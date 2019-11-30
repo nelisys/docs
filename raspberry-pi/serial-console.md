@@ -81,6 +81,12 @@ $ sudo vi /boot/config.txt
 enable_uart=1
 ```
 
+don't forget to run `sync` to flush all buffer into the SD Card
+
+```console
+$ sudo sync
+```
+
 then reboot the Pi.
 
 After reboot
