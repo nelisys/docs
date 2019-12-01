@@ -4,9 +4,15 @@
 
 Wiring
 
-VCC   - Pin #02 5v
-DATA  - Pin #07 GPIO04
-GND   - Pin #09 Ground
+```
+ /-------\
+ | DHT11 |
+ +-------|
+ | VCC   | - Pin #02 5v
+ | DATA  | - Pin #12 GPIO18
+ | GND   | - Pin #09 Ground
+ \-------/
+```
 
 ```console
 $ sudo pip3 install Adafruit_DHT
@@ -16,7 +22,7 @@ $ sudo pip3 install Adafruit_DHT
 # read-dht11.py
 import Adafruit_DHT
 
-dht_values = Adafruit_DHT.read(Adafruit_DHT.DHT11, 4)
+dht_values = Adafruit_DHT.read(Adafruit_DHT.DHT11, 18)
 print(dht_values)
 ```
 
