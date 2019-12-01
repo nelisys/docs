@@ -4,6 +4,8 @@
 
 Screen Resolution : 800 x 480 pixels
 
+Ref: [Raspberry Pi 7" Touchscreen Display](https://www.element14.com/community/docs/DOC-78156/l/raspberry-pi-7-touchscreen-display)
+
 Note: Default Pi Resolution 720x480
 
 ## Wiring
