@@ -28,3 +28,9 @@ class ExampleTest extends TestCase
         ...
     }
 ```
+
+## set the history url
+
+```php
+$this->from('/students');
+```

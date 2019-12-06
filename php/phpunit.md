@@ -1,5 +1,14 @@
 # phpunit
 
+## begin testing
+
+- test files's name must have suffix with 'Test.php'
+- the test class must extend PHPUnit\Framework\TestCase
+
+```php
+$this->assertEquals($expected, $actual);
+```
+
 ## mark test incomplete
 
 ```php
