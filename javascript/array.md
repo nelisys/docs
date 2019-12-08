@@ -136,3 +136,12 @@ split by multiple spaces
 ```javascript
 a.split(/\s+/);
 ```
+
+## implode
+
+```javascript
+let students = ['Alice', 'Bob', 'Chris', 'Dan'];
+
+students.join(', ');
+// Alice, Bob, Chris, Dan
+```
