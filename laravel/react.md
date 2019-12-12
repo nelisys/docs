@@ -1,6 +1,10 @@
 # Laravel React
 
 ```console
+$ laravel new laravel-react
+
+$ cd laravel-react
+
 $ composer require laravel/ui --dev
 
 $ php artisan ui react
