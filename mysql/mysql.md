@@ -38,3 +38,17 @@ mysql> SELECT * FROM students WHERE id IN (1, 3);
 ```sql
 mysql> edit
 ```
+
+## temporary disable/enable foreign key
+
+disable
+
+```sql
+mysql> SET FOREIGN_KEY_CHECKS=0;
+```
+
+re-enable
+
+```sql
+mysql> SET FOREIGN_KEY_CHECKS=1;
+```
