@@ -109,3 +109,62 @@ hello
 
 $ rm test-package.php
 ```
+
+## add Tests
+
+```console
+$ composer require --dev phpunit/phpunit
+```
+
+```console
+$ vi composer.json
+    ...
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Supasin\\PhpPackage\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Supasin\\PhpPackage\\Tests\\": "tests/"
+        }
+    }
+```
+
+```console
+$ composer dump-autoload
+```
+
+file `tests/ItemTest.php`
+
+```php
+<?php
+
+namespace Supasin\PhpPackage\Tests;
+
+use PHPUnit\Framework\TestCase;
+
+class ItemTest extends TestCase
+{
+    /** @test */
+    public function it_can_say_hello()
+    {
+        $this->assertTrue(true);
+    }
+}
+```
+
+```console
+$ phpunit tests/ItemTest.php
+PHPUnit 8.5.0 by Sebastian Bergmann and contributors.
+
+.                                                                   1 / 1 (100%)
+
+Time: 57 ms, Memory: 4.00 MB
+
+OK (1 test, 1 assertion)
+```
