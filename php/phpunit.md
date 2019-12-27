@@ -27,3 +27,45 @@ $this->assertEqualsWithDelta(0.3, 0.301, 0.001);
 $this->assertEqualsWithDelta(0.3, 0.301, 0.01);
 // true
 ```
+
+## assertSame() vs assertEquals()
+
+```php
+$a = 20;
+
+// assertSame() ===
+$this->assertSame(20, $a);      // ok
+$this->assertSame('20', $a);    // fail
+
+// assertEquals() ==
+$this->assertEquals(20, $a);    // ok
+$this->assertEquals('20', $a);  // ok
+```
+
+## phpunit.xml
+
+`phpunit.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
+```
