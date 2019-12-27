@@ -168,3 +168,85 @@ Time: 57 ms, Memory: 4.00 MB
 
 OK (1 test, 1 assertion)
 ```
+
+## phpunit.xml
+
+`phpunit.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
+```
+
+```console
+$ phpunit
+PHPUnit 8.5.0 by Sebastian Bergmann and contributors.
+
+.                                                                   1 / 1 (100%)
+
+Time: 20 ms, Memory: 4.00 MB
+
+OK (1 test, 1 assertion)
+```
+
+## set laravel to use local package
+
+```console
+$ cd laravel-using-php-package/
+
+$ vi composer.json
+...
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../php-package"
+        }
+    ]
+```
+
+```console
+$ composer require supasin/php-package
+Using version dev-master for supasin/php-package
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 1 install, 0 updates, 0 removals
+  - Installing supasin/php-package (dev-master): Symlinking from ../php-package
+Writing lock file
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+Discovered Package: facade/ignition
+Discovered Package: fideloper/proxy
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Package manifest generated successfully.
+```
+
+```console
+$ cat composer.json
+    "require": {
+        ...
+        "supasin/php-package": "dev-master"
+    },
+```
