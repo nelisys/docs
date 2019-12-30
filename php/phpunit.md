@@ -69,3 +69,33 @@ $this->assertEquals('20', $a);  // ok
     </filter>
 </phpunit>
 ```
+
+## Code Coverage
+
+requires `xdebug`
+
+```
+$ phpunit --coverage-text=coverage.txt
+PHPUnit 8.5.0 by Sebastian Bergmann and contributors.
+
+.                                                                   1 / 1 (100%)
+
+Time: 44 ms, Memory: 6.00 MB
+
+OK (1 test, 1 assertion)
+```
+
+```
+$ cat coverage.txt
+
+Code Coverage Report:
+  2019-12-27 01:53:59
+
+ Summary:
+  Classes: 100.00% (1/1)
+  Methods: 100.00% (1/1)
+  Lines:   100.00% (1/1)
+
+\Supasin\PhpPackage::Supasin\PhpPackage\Item
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+```

@@ -1,0 +1,9 @@
+# .gitignore
+
+```
+build
+node_modules
+vendor
+.DS_Store
+.phpunit.result.cache
+```
