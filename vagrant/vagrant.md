@@ -16,7 +16,7 @@ Password: vagrant
 ## Post installation
 - yum update / apt update, apt upgrade
 - [install VirtualBox Guest Additions](../virtualbox/guest-additions.md)
-- [install authorized_keys](https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub)
+- import `authorized_keys` from [vagrant.pub](https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub)
 
 - visudo
 
