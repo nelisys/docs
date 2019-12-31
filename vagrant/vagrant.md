@@ -18,17 +18,19 @@ Password: vagrant
 - [install VirtualBox Guest Additions](../virtualbox/guest-additions.md)
 - import `authorized_keys` from [vagrant.pub](https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub)
 
-- visudo
+- run `visudo`
 
 ```
 vagrant ALL=(ALL) NOPASSWD: ALL
 ```
 
-- sshd_config
+- edit `/etc/ssh/sshd_config`
 
 ```
 UseDNS: no
 ```
+
+- `shutdown`
 
 ## package
 
