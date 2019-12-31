@@ -6,19 +6,29 @@
 - Networking IPv4 Setting : DHCP
 - Root Password: vagrant
 - User Creation
-  User name: vagrant
-  Password: vagrant
-  [x] Make this user administrator
+
+```
+User name: vagrant
+Password: vagrant
+[x] Make this user administrator
+```
 
 ## Post installation
 - yum update / apt update, apt upgrade
-- install authorized_keys
-  from https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub
+- [install VirtualBox Guest Additions](../virtualbox/guest-additions.md)
+- [install authorized_keys](https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub)
+
 - visudo
-  vagrant ALL=(ALL) NOPASSWD: ALL
+
+```
+vagrant ALL=(ALL) NOPASSWD: ALL
+```
 
 - sshd_config
-  UseDNS: no
+
+```
+UseDNS: no
+```
 
 ## package
 
