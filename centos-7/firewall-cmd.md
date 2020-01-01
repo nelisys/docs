@@ -31,6 +31,17 @@ public (active)
   rich rules:
 ```
 
+## zones
+
+```console
+$ firewall-cmd --get-active-zones
+public
+  interfaces: enp0s3 enp0s8
+
+$ sudo firewall-cmd --get-default-zone
+public
+```
+
 ## service info
 
 ```console

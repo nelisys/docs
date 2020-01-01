@@ -11,6 +11,7 @@ $ sudo systemctl enable --now cockpit.socket
 ```
 
 ```console
-$ sudo firewall-cmd --permanent --zone=public --add-service=cockpit
-$ sudo firewall-cmd --reload
+$ sudo firewall-cmd --add-service=cockpit
+
+$ sudo firewall-cmd --runtime-to-permanent
 ```

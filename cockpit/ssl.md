@@ -7,3 +7,7 @@ $ sudo vi /etc/cockpit/cockpit.conf
 [WebService]
 AllowUnencrypted=true
 ```
+
+```console
+$ sudo systemctl restart cockpit.socket
+```
