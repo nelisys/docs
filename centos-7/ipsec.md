@@ -1,6 +1,7 @@
 # IPsec
 
 ## install
+
 ```console
 $ sudo yum install -y libreswan
 ```
@@ -17,8 +18,6 @@ $ cat /etc/ipsec.conf
 config setup
     plutodebug=none
     virtual_private=%v4:10.0.0.0/8,%v4:192.168.0.0/16,%v4:172.16.0.0/12,%v4:25.0.0.0/8,%v4:100.64.0.0/10,%v6:fd00::/8,%v6:fe80::/10
-
-include /etc/crypto-policies/back-ends/libreswan.config
 
 include /etc/ipsec.d/*.conf
 
@@ -41,19 +40,13 @@ total 24
 
 ## init NSS database
 
+```console
+$ sudo ipsec initnss
+```
 note: just enter for the password prompt
 
 ```console
-$ sudo certutil -N -d sql:/etc/ipsec.d
-Enter a password which will be used to encrypt your keys.
-The password should be at least 8 characters long,
-and should contain at least one non-alphabetic character.
-
-Enter new password:
-Re-enter password:
-
 $ sudo ls -l /etc/ipsec.d
-total 68
 -rw-------. 1 root root 28672 Oct 15 10:29 cert9.db
 -rw-------. 1 root root 36864 Oct 15 10:29 key4.db
 -rw-------. 1 root root   423 Oct 15 10:29 pkcs11.txt
@@ -87,7 +80,6 @@ $ sudo ipsec newhostkey --output /etc/ipsec.d/hostkey.secrets
 Generated RSA key pair with CKAID b49ae187... was stored in the NSS database
 
 $ sudo ls -l /etc/ipsec.d/
-total 72
 -rw-------. 1 root root 28672 Oct 15 10:33 cert9.db
 -rw-------. 1 root root  1642 Oct 15 10:33 hostkey.secrets
 -rw-------. 1 root root 36864 Oct 15 10:33 key4.db
