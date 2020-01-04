@@ -69,6 +69,10 @@ $ systemctl status ipsec
 ```console
 $ sudo firewall-cmd --add-service=ipsec
 success
+
+$ sudo firewall-cmd --add-rich-rule='rule protocol value="esp" accept'
+
+$ sudo firewall-cmd --runtime-to-permanent
 ```
 
 ## site to site

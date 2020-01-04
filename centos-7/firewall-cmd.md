@@ -70,3 +70,30 @@ $ cat /usr/lib/firewalld/services/ssh.xml
 $ sudo firewall-cmd --runtime-to-permanent
 success
 ```
+
+## denied logs
+
+turn on log denied
+
+```console
+$ sudo firewall-cmd --get-log-denied
+off
+
+$ sudo firewall-cmd --set-log-denied=all
+success
+
+$ sudo firewall-cmd --get-log-denied
+all
+```
+
+to view denied logs
+
+```console
+$ sudo tail /var/log/messages
+```
+
+turn off
+
+```console
+$ sudo firewall-cmd --set-log-denied=off
+```
