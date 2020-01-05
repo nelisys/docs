@@ -3,9 +3,12 @@
 ## ip forward
 
 ```console
-$ sudo vi /usr/lib/sysctl.d/50-default.conf
+$ sudo vi /etc/sysctl.conf
 ...
 # Enable IP Forwarding
+net.ipv4.ip_forward = 1
+
+$ sudo sysctl -p
 net.ipv4.ip_forward = 1
 ```
 
