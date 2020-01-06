@@ -97,3 +97,16 @@ turn off
 ```console
 $ sudo firewall-cmd --set-log-denied=off
 ```
+
+## forward port
+
+```console
+$ sudo firewall-cmd --add-forward-port=port=80:proto=tcp:toport=80:toaddr=10.0.0.1
+
+```
+
+(optional) masquerade
+
+```
+$ firewall-cmd --add-masquerade
+```
