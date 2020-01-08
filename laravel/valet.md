@@ -1,11 +1,15 @@
 # valet
 
+## Requirements
+
 ```console
 $ brew install dnsmasq
 $ brew install mysql@5.7
 $ brew install nginx
 $ brew install php@7.3
 ```
+
+## Installation
 
 ```console
 $ composer global require laravel/valet
