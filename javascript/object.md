@@ -28,3 +28,17 @@ for (let key of keys) {
 // age = 15
 ```
 
+## Object destructuring
+
+```javascript
+const student = {
+    id: 1,
+    name: 'Alice',
+    age: 15
+}
+
+const {name, age} = student;
+
+// name = Alice
+// age = 15
+```
