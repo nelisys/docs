@@ -31,6 +31,12 @@ $stmt->execute([
 ]);
 ```
 
+get last insert id
+
+```php
+$db->lastInsertId();
+```
+
 ## exec
 
 ```php
