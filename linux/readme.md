@@ -18,10 +18,13 @@
 - Ubuntu
   - Ubuntu Desktop
   - Ubuntu Server
-  - Version 18.04LTS vs 19.10
+  - Version 18.04 LTS vs 19.10
 
 ## Linux Installation
 
+- Machine to Install
+  - PC/Server
+  - Virtual Machine
 - CentOS Linux 8 Installation
 - Ubuntu Server 18.04 Installation
 
