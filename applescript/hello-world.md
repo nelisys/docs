@@ -18,4 +18,4 @@ drwxr-xr-x  3 supasin  staff   96 Feb  1 09:08 hello-world.app
 
 run `hello-world.app`
 
-(images/hello-world.png)
+![Hello World Dialog](images/hello-world.png)
