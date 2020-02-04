@@ -99,3 +99,15 @@ $ cat package.json
   "license": "ISC"
 }
 ```
+
+## dev dependencies
+
+```console
+$ npm install --save-dev moment
+
+$ cat package.json
+    ...
+    "devDependencies": {
+        ...
+        "moment": "^2.24.0",
+```
