@@ -32,7 +32,7 @@ Wrote to /Users/supasin/Sites/tailwind/package.json:
 }
 ```
 
-ใช้คำสั่ง npm install ติดตั้ง tailwind และแพ็คเกจอื่นๆ ที่ใช้ในการรัน
+ใช้คำสั่ง npm install ติดตั้ง tailwind และแพ็คเกจอื่นๆ ที่ใช้ในการรันและประมวลผล css
 
 ```console
 $ npm install tailwindcss postcss-cli autoprefixer
@@ -73,7 +73,7 @@ $ vi css/tailwind.css
 @tailwind utilities;
 ```
 
-แก้ไขไฟล์ package.json ภายใต้ `scripts` เพิ่มคำสั่ง `build` เพื่อใช้ในการประมวลผลไฟล์ `tailwind.css`
+แก้ไขไฟล์ package.json โดยภายใต้ `scripts` เพิ่มคำสั่ง `build` เพื่อใช้ในการประมวลผลไฟล์ `tailwind.css`
 
 ```console
 $ vi package.json
@@ -84,7 +84,7 @@ $ vi package.json
   ...
 ```
 
-ใช้คำสั่ง `npm` ระบุออปชัน `run` เพื่อรันคำสั่ง `build' ที่ถูกกำหนดไว้ภายใต้ `script` ในไฟล์ `package.json`
+ใช้คำสั่ง `npm` ระบุออปชัน `run` เพื่อรันคำสั่ง `build` ที่ถูกกำหนดไว้ภายใต้ `script` ในไฟล์ `package.json`
 
 ```console
 $ npm run build
@@ -102,7 +102,7 @@ $ ls -l public/build/tailwind.css
 
 ## ทดลองใช้งาน tailwind เบื้องต้น
 
-สร้างไฟล์ `index.html` ไว้ในโฟลเดอร์ `public/` เพื่อทดสอบการแสดงผล
+สร้างไฟล์ `index.html` ไว้ในโฟลเดอร์ `public/` เพื่อทดสอบการแสดงผล โดยใช้ tailwind เป็น css stylesheet
 
 ```html
 <html lang="en">
@@ -139,7 +139,7 @@ $ ls -l public/build/tailwind.css
 
 ตัวอย่างของผลลัพธ์ที่ได้
 
-![H1 with Tailwind Class](02-h1-with-tailwind-class.png)
+![H1 with Tailwind Class](images/02-h1-with-tailwind-class.png)
 
 ## ข้อมูลเพิ่มเติม
 - [Setting up Tailwind and PostCSS](https://tailwindcss.com/course/setting-up-tailwind-and-postcss)
