@@ -2,8 +2,8 @@
 
 ## installation
 
-```console
-$ npm install --save-dev vue \
+```bashj
+npm install --save-dev vue \
     vue-template-compiler \
     vue-router
 ```
@@ -11,11 +11,42 @@ $ npm install --save-dev vue \
 ## setup files
 
 ```javascript
-// resources/js/bootstrap.js
-window._ = require('lodash');
+// resources/js/App.vue
+<template>
+    <div>
+        <my-nav></my-nav>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
+</template>
+```
 
-window.axios = require('axios');
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+```javascript
+// resources/js/Home.vue
+<template>
+    <div>
+        home
+    </div>
+</template>
+```
+
+```javascript
+// resources/js/Nav.vue
+<template>
+    <nav>
+        nav
+    </nav>
+</template>
+```
+
+```javascript
+// resources/js/NotFound.vue
+<template>
+    <div>
+        not found
+    </div>
+</template>
 ```
 
 ```javascript
@@ -42,6 +73,14 @@ const app = new Vue({
 ```
 
 ```javascript
+// resources/js/bootstrap.js
+window._ = require('lodash');
+
+window.axios = require('axios');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+```
+
+```javascript
 // resources/js/routes.js
 const routes = [
     {
@@ -60,45 +99,6 @@ export default routes;
 ```
 
 ```javascript
-// resources/js/App.vue
-<template>
-    <div>
-        <my-nav></my-nav>
-        <div>
-            <router-view></router-view>
-        </div>
-    </div>
-</template>
-```
-
-```javascript
-// resources/js/Home.vue
-<template>
-    <div>
-        home
-    </div>
-</template>
-```
-
-```javascript
-// resources/js/NotFound.vue
-<template>
-    <div>
-        not found
-    </div>
-</template>
-```
-
-```javascript
-// resources/js/Nav.vue
-<template>
-    <nav>
-        nav
-    </nav>
-</template>
-```
-
-```javascript
 // webpack.mix.js
 const mix = require('laravel-mix');
 
@@ -108,6 +108,20 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.extract();
 ```
+
+## compile files
+
+```console
+$ npm run dev
+
+$ ls -l public/js/
+total 2040
+-rw-r--r--  1 supasin  staff    21000 Feb  9 10:08 app.js
+-rw-r--r--  1 supasin  staff     6269 Feb  9 10:08 manifest.js
+-rw-r--r--  1 supasin  staff  1009688 Feb  9 10:08 vendor.js
+```
+
+## change Laravel route file
 
 ```php
 // routes/web.php
@@ -137,16 +151,4 @@ Route::view('/{any?}', 'app')
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
-```
-
-## compile files
-
-```console
-$ npm run dev
-
-$ ls -l public/js/
-total 2040
--rw-r--r--  1 supasin  staff    21000 Feb  9 10:08 app.js
--rw-r--r--  1 supasin  staff     6269 Feb  9 10:08 manifest.js
--rw-r--r--  1 supasin  staff  1009688 Feb  9 10:08 vendor.js
 ```
