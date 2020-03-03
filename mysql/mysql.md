@@ -52,3 +52,19 @@ re-enable
 ```sql
 mysql> SET FOREIGN_KEY_CHECKS=1;
 ```
+
+## prompt
+
+```
+$ vi ~/.my.cnf
+[mysql]
+prompt="\u@\d> "
+```
+
+```
+$ mysql -u root -p
+root@(none)>
+
+root@(none)> use mysql
+root@mysql>
+```
