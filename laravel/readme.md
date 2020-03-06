@@ -1,14 +1,4 @@
-# Laravel 6
+# readme
 
-## Server Requirements
-
-- [composer](../php/composer.md)
-- [valet](valet.md#installation)
-
-## Installation
-
-- [install](install.md)
-
-## Basic
-
-- [routing](routing.md)
+- [Installation](installation.md)
+- [Hello World](hello-world.md)
