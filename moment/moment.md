@@ -11,7 +11,7 @@ moment("2019-09-24", "YYYY-MM-DD");
 format()
 
 ```jacascript
-moment().format('YYYY-MM-DD HH:MM:ss');
+moment().format('YYYY-MM-DD HH:mm:ss');
 ```
 
 ## formats
@@ -19,6 +19,7 @@ moment().format('YYYY-MM-DD HH:MM:ss');
 | format     | example    |
 | ---------- | ---------- |
 | YYYY-MM-DD | 2019-08-07 |
+| HH:mm:ss   | 23:47      |
 | D MMM YYYY | 7 Aug 2019 |
 | ddd        | Sun        |
 
