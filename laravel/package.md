@@ -142,3 +142,88 @@ Route::get('help', function() {
     return 'Hello';
 });
 ```
+
+## using the package
+
+In project that want to use the custom package
+
+```console
+$ composer create-project --prefer-dist laravel/laravel laravel-using-packages
+```
+
+add `repositories` in `composer.json`
+
+```json
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../laravel-package"
+        }
+    ]
+}
+```
+
+install the package
+
+```console
+$ composer require supasin/laravel-package
+Using version dev-master for supasin/laravel-package
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 1 install, 0 updates, 0 removals
+  - Installing supasin/laravel-package (dev-master): Symlinking from ../laravel-package
+Writing lock file
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+Discovered Package: facade/ignition
+Discovered Package: fideloper/proxy
+Discovered Package: fruitcake/laravel-cors
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Discovered Package: supasin/laravel-package
+Package manifest generated successfully.
+```
+
+```console
+$ ls -l vendor/supasin/
+lrwxr-xr-x  1 supasin  staff  24 Mar 13 21:20 laravel-package -> ../../../laravel-package
+```
+
+verify the routes from the custom package
+
+```console
+$ php artisan route:list
++--------+----------+----------+------+---------+--------------+
+| Domain | Method   | URI      | Name | Action  | Middleware   |
++--------+----------+----------+------+---------+--------------+
+|        | GET|HEAD | /        |      | Closure | web          |
+|        | GET|HEAD | api/user |      | Closure | api,auth:api |
+|        | GET|HEAD | help     |      | Closure |              |
++--------+----------+----------+------+---------+--------------+
+```
+
+```console
+$ curl http://laravel-using-packages.test/help
+Hello
+```
+
+try edit the package
+
+```
+$ vi ../laravel-package/src/routes/web.php
+<?php
+
+Route::get('help', function() {
+    return 'Hello World';
+});
+```
+
+test the link after edit
+
+```
+$ curl http://laravel-using-packages.test/help
+Hello World
+```
