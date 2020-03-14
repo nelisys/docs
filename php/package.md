@@ -1,10 +1,13 @@
 # PHP Package
 
-## Why PHP Package?
-- Reusable libraries, which can easily plug-in to your app
-- Community maintain for OpenSource Project
+Create folder to store the package files.
 
-## Create Package
+```console
+$ mkdir php-package
+$ cd php-package/
+```
+
+## Init composer
 
 ```console
 $ composer init
@@ -13,9 +16,9 @@ $ composer init
 
 This command will guide you through creating your composer.json config.
 
-Package name (<vendor>/<name>) [supasin/php-package]:
+Package name (<vendor>/<name>) [nelisys/php-package]: nelisys/php-package
 Description []: Learn how to create PHP Package
-Author [Supasin S. <...>, n to skip]:
+Author [Supasin S. <supasin@example.com>, n to skip]: n
 Minimum Stability []:
 Package Type (e.g. library, project, metapackage, composer-plugin) []: library
 License []: MIT
@@ -26,28 +29,17 @@ Would you like to define your dependencies (require) interactively [yes]? no
 Would you like to define your dev dependencies (require-dev) interactively [yes]? no
 
 {
-    "name": "supasin/php-package",
+    "name": "nelisys/php-package",
     "description": "Learn how to create PHP Package",
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Supasin S.",
-            "email": "..."
-        }
-    ],
     "require": {}
 }
 
 Do you confirm generation [yes]?
 ```
 
-```console
-$ ls -l
--rw-r--r--  1 supasin  staff  277 Dec 21 20:55 composer.json
-```
-
-add `autolaod` into file `composer.json`
+add `autoload`, `autoload-dev` in `composer.json`
 
 ```
 $ vi composer.json
@@ -55,18 +47,32 @@ $ vi composer.json
     "require": {},
     "autoload": {
         "psr-4": {
-            "Supasin\\PhpPackage\\": "src/"
+            "Nelisys\\PhpPackage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nelisys\\PhpPackage\\Tests\\": "tests/"
         }
     }
 }
 ```
+
+Run `composer dump-autoload`
+
+```console
+$ composer dump-autoload
+Generated autoload files containing 578 classes
+```
+
+## Create src/ files
 
 create `src/Item.php`
 
 ```php
 <?php
 // src/Item.php
-namespace Supasin\PhpPackage;
+namespace Nelisys\PhpPackage;
 
 class Item
 {
@@ -77,82 +83,31 @@ class Item
 }
 ```
 
-## Just Test PHP Package
+## Add Tests
 
-```
-$ composer dump-autoload
-Generated autoload files containing 0 classes
-
-$ ls -l
--rw-r--r--  1 supasin  staff  375 Dec 21 21:29 composer.json
-drwxr-xr-x  3 supasin  staff   96 Dec 21 21:27 src
-drwxr-xr-x  4 supasin  staff  128 Dec 21 21:30 vendor
-```
-
-create test file `test-package.php`
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$item = new Supasin\PhpPackage\Item();
-
-$item->hello();
-```
-
-run
-
-```console
-$ php test-package.php
-hello
-
-$ rm test-package.php
-```
-
-## add Tests
+Install `phpunit` to test the package.
 
 ```console
 $ composer require --dev phpunit/phpunit
 ```
 
-```console
-$ vi composer.json
-    ...
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "Supasin\\PhpPackage\\": "src/"
-        }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^8.5"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Supasin\\PhpPackage\\Tests\\": "tests/"
-        }
-    }
-```
-
-```console
-$ composer dump-autoload
-```
-
-file `tests/ItemTest.php`
+Add file `tests/ItemTest.php`
 
 ```php
 <?php
 
-namespace Supasin\PhpPackage\Tests;
+namespace Nelisys\PhpPackage\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Nelisys\PhpPackage\Item;
 
 class ItemTest extends TestCase
 {
     /** @test */
     public function it_can_say_hello()
     {
+        $item = new Item();
+
         $this->assertTrue(true);
     }
 }
@@ -169,9 +124,9 @@ Time: 57 ms, Memory: 4.00 MB
 OK (1 test, 1 assertion)
 ```
 
-## phpunit.xml
+## phpunit.xml.dist
 
-`phpunit.xml`
+Create `phpunit.xml.dist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -186,12 +141,12 @@ OK (1 test, 1 assertion)
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Test Suite">
-            <directory>tests</directory>
+            <directory suffix=".php">./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
 </phpunit>
@@ -208,45 +163,86 @@ Time: 20 ms, Memory: 4.00 MB
 OK (1 test, 1 assertion)
 ```
 
-## set laravel to use local package
+## Using the package
+
+Create folder `php-using-package`
 
 ```console
-$ cd laravel-using-php-package/
+$ mkdir php-using-package
+$ cd php-using-package/
+```
 
-$ vi composer.json
-...
+Create `composer.json` and add `repositories`
+
+```
+{
     "repositories": [
         {
             "type": "path",
             "url": "../php-package"
         }
     ]
+}
 ```
 
 ```console
-$ composer require supasin/php-package
-Using version dev-master for supasin/php-package
+$ composer require nelisys/php-package
+
+  [InvalidArgumentException]
+  Could not find a version of package nelisys/php-package matching your minimum-stability (stable).
+  Require it with an explicit version constraint allowing its desired stability.
+
+require [--dev] [--prefer-source] [--prefer-dist] [--no-progress] [--no-suggest] [--no-update] [--no-scripts] [--update-no-dev] [--update-with-dependencies] [--update-with-all-dependencies] [--ignore-platform-reqs] [--prefer-stable] [--prefer-lowest] [--sort-packages] [-o|--optimize-autoloader] [-a|--classmap-authoritative] [--apcu-autoloader] [--] [<packages>]...
+```
+
+Edit `minimum-stability` in `composer.json`
+
+```console
+{
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../php-package"
+        }
+    ],
+    "require": {
+        "nelisys/php-package": "dev-master"
+    }
+}
+```
+
+Try install the package again.
+
+```console
+$ composer require nelisys/php-package
+Using version dev-master for nelisys/php-package
 ./composer.json has been updated
 Loading composer repositories with package information
 Updating dependencies (including require-dev)
 Package operations: 1 install, 0 updates, 0 removals
-  - Installing supasin/php-package (dev-master): Symlinking from ../php-package
+  - Installing nelisys/php-package (dev-master): Symlinking from ../php-package
 Writing lock file
-Generating optimized autoload files
-> Illuminate\Foundation\ComposerScripts::postAutoloadDump
-> @php artisan package:discover --ansi
-Discovered Package: facade/ignition
-Discovered Package: fideloper/proxy
-Discovered Package: laravel/tinker
-Discovered Package: nesbot/carbon
-Discovered Package: nunomaduro/collision
-Package manifest generated successfully.
+Generating autoload files
 ```
 
+Create `test-package.php` to test the package class.
+
+```php
+<?php
+// test-package.php
+require 'vendor/autoload.php';
+
+use Nelisys\PhpPackage\Item;
+
+$item = new Item();
+
+echo $item->hello();
+```
+
+Run the test file
+
 ```console
-$ cat composer.json
-    "require": {
-        ...
-        "supasin/php-package": "dev-master"
-    },
+$ php test-package.php
+hello
 ```
