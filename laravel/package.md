@@ -1,50 +1,36 @@
 # Laravel Package
 
-## composer.json
+Create folder to store the package files.
 
-`composer.json`
+```
+$ mkdir laravel-package
+$ cd laravel-package/
+```
 
-```json
+## Init composer.json
+
+Init `composer.json`.
+
+Note: do not forget to change vender name to yours.
+
+```
+$ vi composer.json
 {
-    "name": "supasin/laravel-package",
-    "description": "Learn how to create Laravel Package",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Supasin S.",
-            "email": "..."
-        }
-    ],
-    "require": {
-        "php": "^7.2.5"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^5.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Supasin\\LaravelPackage\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Supasin\\LaravelPackage\\Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Supasin\\LaravelPackage\\ItemServiceProvider"
-            ]
-        }
-    }
+    "name": "nelisys/laravel-package",
+    "description": "Learn how to create Laravel Package"
 }
 ```
 
-## Tests
+Install required packages.
 
-`phpunit.xml.dist`
+```
+$ composer require illuminate/support
+$ composer require --dev orchestra/testbench
+```
+
+## Prepare tests files
+
+Create `phpunit.xml.dist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -70,15 +56,21 @@
 </phpunit>
 ```
 
-`tests/ItemTest.php`
+Create folder `tests/` to store test files.
+
+```console
+$ mkdir tests
+```
+
+Create `tests/ItemTest.php`.
 
 ```php
 <?php
 
-namespace Supasin\LaravelPackage\Tests;
+namespace Nelisys\LaravelPackage\Tests;
 
 use Orchestra\Testbench\TestCase;
-use Supasin\LaravelPackage\Item;
+use Nelisys\LaravelPackage\Item;
 
 class ItemTest extends TestCase
 {
@@ -94,12 +86,18 @@ class ItemTest extends TestCase
 
 ## src
 
-`src/Item.php`
+Create folder `src/` to store application files.
+
+```console
+$ mkdir src
+```
+
+Create `src/Item.php`.
 
 ```
 <?php
 
-namespace Supasin\LaravelPackage;
+namespace Nelisys\LaravelPackage;
 
 class Item extends
 {
@@ -109,6 +107,53 @@ class Item extends
     }
 }
 ```
+
+Edit `composer.json` to define `autoload` sections.
+
+```json
+{
+    "name": "nelisys/laravel-package",
+    "description": "Learn how to create Laravel Package",
+    "require": {
+        "illuminate/support": "^7.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nelisys\\LaravelPackage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nelisys\\LaravelPackage\\Tests\\": "tests/"
+        }
+    }
+}
+```
+
+Run `composer dump-autoload`.
+
+```console
+$ composer dump-autoload
+Generated autoload files containing 647 classes
+```
+
+Run `phpunit`.
+
+```console
+$ phpunit
+PHPUnit 8.5.2 by Sebastian Bergmann and contributors.
+
+.                                                                   1 / 1 (100%)
+
+Time: 87 ms, Memory: 14.00 MB
+
+OK (1 test, 1 assertion)
+```
+
+## add ServiceProvider
 
 `src/ItemServiceProvider.php`
 
