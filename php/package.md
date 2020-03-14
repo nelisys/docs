@@ -66,10 +66,16 @@ Run `composer dump-autoload`
 
 ```console
 $ composer dump-autoload
-Generated autoload files containing 0 classes
+Generated autoload files containing 578 classes
 ```
 
 ## Create src/ files
+
+create folder `src`
+
+```console
+$ mkdir src
+```
 
 create `src/Item.php`
 
@@ -89,7 +95,13 @@ class Item
 
 ## Add Tests
 
-Add file `tests/ItemTest.php`
+Create folder `tests`
+
+```console
+$ mkdir tests
+```
+
+Create file `tests/ItemTest.php`
 
 ```php
 <?php
@@ -111,6 +123,8 @@ class ItemTest extends TestCase
 }
 ```
 
+Run `phpunit` with specify test file.
+
 ```console
 $ phpunit tests/ItemTest.php
 PHPUnit 8.5.0 by Sebastian Bergmann and contributors.
@@ -124,7 +138,7 @@ OK (1 test, 1 assertion)
 
 ## phpunit.xml.dist
 
-Create `phpunit.xml.dist`
+Create `phpunit.xml.dist` to setup test environment.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -149,6 +163,8 @@ Create `phpunit.xml.dist`
     </filter>
 </phpunit>
 ```
+
+Run `phpunit`
 
 ```console
 $ phpunit
