@@ -39,12 +39,16 @@ Would you like to define your dev dependencies (require-dev) interactively [yes]
 Do you confirm generation [yes]?
 ```
 
+Install `phpunit` to test the package.
+
+```console
+$ composer require --dev phpunit/phpunit
+```
+
 add `autoload`, `autoload-dev` in `composer.json`
 
-```
-$ vi composer.json
+```json
     ...
-    "require": {},
     "autoload": {
         "psr-4": {
             "Nelisys\\PhpPackage\\": "src/"
@@ -62,7 +66,7 @@ Run `composer dump-autoload`
 
 ```console
 $ composer dump-autoload
-Generated autoload files containing 578 classes
+Generated autoload files containing 0 classes
 ```
 
 ## Create src/ files
@@ -84,12 +88,6 @@ class Item
 ```
 
 ## Add Tests
-
-Install `phpunit` to test the package.
-
-```console
-$ composer require --dev phpunit/phpunit
-```
 
 Add file `tests/ItemTest.php`
 
