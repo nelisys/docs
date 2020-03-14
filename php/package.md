@@ -213,16 +213,13 @@ Edit `minimum-stability` in `composer.json`
 
 ```console
 {
-    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "path",
             "url": "../php-package"
         }
     ],
-    "require": {
-        "nelisys/php-package": "dev-master"
-    }
+    "minimum-stability": "dev"
 }
 ```
 
