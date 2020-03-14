@@ -9,12 +9,11 @@ $ cd laravel-package/
 
 ## Init composer.json
 
-Init `composer.json`.
+Init `composer.json`
 
 Note: do not forget to change vender name to yours.
 
-```
-$ vi composer.json
+```json
 {
     "name": "nelisys/laravel-package",
     "description": "Learn how to create Laravel Package"
@@ -26,6 +25,21 @@ Install required packages.
 ```
 $ composer require illuminate/support
 $ composer require --dev orchestra/testbench
+```
+
+Edit `composer.json` by changing the `require` to use the major version.
+
+```json
+{
+    "name": "nelisys/laravel-package",
+    "description": "Learn how to create Laravel Package",
+    "require": {
+        "illuminate/support": "^7"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5"
+    }
+}
 ```
 
 ## Prepare tests files
@@ -62,7 +76,7 @@ Create folder `tests/` to store test files.
 $ mkdir tests
 ```
 
-Create `tests/ItemTest.php`.
+Create `tests/ItemTest.php`
 
 ```php
 <?php
@@ -92,14 +106,14 @@ Create folder `src/` to store application files.
 $ mkdir src
 ```
 
-Create `src/Item.php`.
+Create `src/Item.php`
 
 ```
 <?php
 
 namespace Nelisys\LaravelPackage;
 
-class Item extends
+class Item
 {
     public function hello()
     {
@@ -133,14 +147,14 @@ Edit `composer.json` to define `autoload` sections.
 }
 ```
 
-Run `composer dump-autoload`.
+Run `composer dump-autoload`
 
 ```console
 $ composer dump-autoload
 Generated autoload files containing 647 classes
 ```
 
-Run `phpunit`.
+Run `phpunit`
 
 ```console
 $ phpunit
@@ -153,14 +167,14 @@ Time: 87 ms, Memory: 14.00 MB
 OK (1 test, 1 assertion)
 ```
 
-## add ServiceProvider
+## ServiceProvider
 
-`src/ItemServiceProvider.php`
+Create `src/ItemServiceProvider.php`
 
 ```php
 <?php
 
-namespace Supasin\LaravelPackage;
+namespace Nelisys\LaravelPackage;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -168,6 +182,7 @@ class ItemServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        //
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
     }
 
@@ -178,22 +193,14 @@ class ItemServiceProvider extends ServiceProvider
 }
 ```
 
-`src/routes/web.php`
+## Using the package
 
-```php
-<?php
+Create a new Laravel project to use the created package.
 
-Route::get('help', function() {
-    return 'Hello';
-});
-```
-
-## using the package
-
-In project that want to use the custom package
+Note: in this case, the project and package are located in the same folder.
 
 ```console
-$ composer create-project --prefer-dist laravel/laravel laravel-using-packages
+$ composer create-project --prefer-dist laravel/laravel laravel-using-package
 ```
 
 add `repositories` in `composer.json`
@@ -208,36 +215,92 @@ add `repositories` in `composer.json`
 }
 ```
 
-install the package
+Install the package.
 
 ```console
-$ composer require supasin/laravel-package
-Using version dev-master for supasin/laravel-package
-./composer.json has been updated
-Loading composer repositories with package information
-Updating dependencies (including require-dev)
-Package operations: 1 install, 0 updates, 0 removals
-  - Installing supasin/laravel-package (dev-master): Symlinking from ../laravel-package
-Writing lock file
-Generating optimized autoload files
-> Illuminate\Foundation\ComposerScripts::postAutoloadDump
-> @php artisan package:discover --ansi
-Discovered Package: facade/ignition
-Discovered Package: fideloper/proxy
-Discovered Package: fruitcake/laravel-cors
-Discovered Package: laravel/tinker
-Discovered Package: nesbot/carbon
-Discovered Package: nunomaduro/collision
-Discovered Package: supasin/laravel-package
-Package manifest generated successfully.
+$ composer require nelisys/laravel-package
 ```
 
 ```console
-$ ls -l vendor/supasin/
-lrwxr-xr-x  1 supasin  staff  24 Mar 13 21:20 laravel-package -> ../../../laravel-package
+$ ls -l vendor/nelisys/
+lrwxr-xr-x  1 supasin  staff  24 Mar 14 11:01 laravel-package -> ../../../laravel-package
 ```
 
-verify the routes from the custom package
+## Routes
+
+### add tests
+
+Modify `tests/ItemTest.php` to define Service Providers.
+
+```php
+// ...
+use Nelisys\LaravelPackage\ItemServiceProvider;
+
+class ItemTest extends TestCase
+{
+    protected function getPackageProviders($app)
+    {
+        return [
+            ItemServiceProvider::class,
+        ];
+    }
+
+    // ...
+```
+
+Add test routes.
+
+```php
+// ...
+class ItemTest extends TestCase
+{
+    // ...
+
+    /** @test */
+    public function it_can_say_hello_from_routes_web()
+    {
+        $this->get('hello')
+            ->assertStatus(200)
+            ->assertSee('hello');
+    }
+```
+
+
+### edit ServiceProvider
+
+Add `loadRoutesFrom()` in `ItemServiceProvider` method `boot()`
+
+```
+class ItemServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        // ...
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+    }
+```
+
+### routes file
+
+Create folder `src/routes/` to store routes files.
+
+```console
+$ mkdir src/routes
+```
+
+Create `src/routes/web.php`
+
+```php
+<?php
+
+Route::get('hello', function() {
+    return (new Item())->hello();
+});
+```
+
+### Laravel Project
+
+In Laravel project, verify the routes from the custom package
 
 ```console
 $ php artisan route:list
@@ -246,29 +309,11 @@ $ php artisan route:list
 +--------+----------+----------+------+---------+--------------+
 |        | GET|HEAD | /        |      | Closure | web          |
 |        | GET|HEAD | api/user |      | Closure | api,auth:api |
-|        | GET|HEAD | help     |      | Closure |              |
+|        | GET|HEAD | hello    |      | Closure |              |
 +--------+----------+----------+------+---------+--------------+
 ```
 
 ```console
-$ curl http://laravel-using-packages.test/help
-Hello
-```
-
-try edit the package
-
-```
-$ vi ../laravel-package/src/routes/web.php
-<?php
-
-Route::get('help', function() {
-    return 'Hello World';
-});
-```
-
-test the link after edit
-
-```
-$ curl http://laravel-using-packages.test/help
-Hello World
+$ curl http://laravel-using-package.test/hello
+hello
 ```
