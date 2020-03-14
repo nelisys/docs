@@ -29,6 +29,8 @@ $ composer require --dev orchestra/testbench
 
 Edit `composer.json` by changing the `require` to use the major version.
 
+Note: test with Laravel 7
+
 ```json
 {
     "name": "nelisys/laravel-package",
@@ -108,7 +110,7 @@ $ mkdir src
 
 Create `src/Item.php`
 
-```
+```php
 <?php
 
 namespace Nelisys\LaravelPackage;
@@ -183,7 +185,6 @@ class ItemServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
     }
 
     public function register()
@@ -201,6 +202,12 @@ Note: in this case, the project and package are located in the same folder.
 
 ```console
 $ composer create-project --prefer-dist laravel/laravel laravel-using-package
+```
+
+`cd` into the project.
+
+```console
+$ cd laravel-using-package/
 ```
 
 add `repositories` in `composer.json`
@@ -270,7 +277,7 @@ class ItemTest extends TestCase
 
 Add `loadRoutesFrom()` in `ItemServiceProvider` method `boot()`
 
-```
+```php
 class ItemServiceProvider extends ServiceProvider
 {
     public function boot()
