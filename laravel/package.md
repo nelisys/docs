@@ -27,14 +27,12 @@ $ composer require illuminate/support
 $ composer require --dev orchestra/testbench
 ```
 
-Edit `composer.json` by changing the `require` to use the major version.
+Change the `require`, `require-dev` sections in `composer.json` to use the major version.
 
 Note: test with Laravel 7
 
 ```json
-{
-    "name": "nelisys/laravel-package",
-    "description": "Learn how to create Laravel Package",
+    ...
     "require": {
         "illuminate/support": "^7"
     },
@@ -44,7 +42,56 @@ Note: test with Laravel 7
 }
 ```
 
-## Prepare tests files
+Add `autoload`, `autoload-dev` sections.
+
+```json
+    ...
+    "autoload": {
+        "psr-4": {
+            "Nelisys\\LaravelPackage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nelisys\\LaravelPackage\\Tests\\": "tests/"
+        }
+    }
+}
+```
+
+Create folder `src/` and `tests/`
+
+```console
+$ mkdir src
+$ mkdir tests
+```
+
+Run `composer dump-autoload`
+
+```console
+$ composer dump-autoload
+Generated autoload files containing 647 classes
+```
+
+## Create src/ files
+
+Create `src/Item.php`
+
+```php
+<?php
+
+namespace Nelisys\LaravelPackage;
+
+class Item
+{
+    public function hello()
+    {
+        return 'hello';
+    }
+}
+```
+
+## Create tests files
 
 Create `phpunit.xml.dist`
 
@@ -72,12 +119,6 @@ Create `phpunit.xml.dist`
 </phpunit>
 ```
 
-Create folder `tests/` to store test files.
-
-```console
-$ mkdir tests
-```
-
 Create `tests/ItemTest.php`
 
 ```php
@@ -100,62 +141,6 @@ class ItemTest extends TestCase
 }
 ```
 
-## src
-
-Create folder `src/` to store application files.
-
-```console
-$ mkdir src
-```
-
-Create `src/Item.php`
-
-```php
-<?php
-
-namespace Nelisys\LaravelPackage;
-
-class Item
-{
-    public function hello()
-    {
-        return 'hello';
-    }
-}
-```
-
-Edit `composer.json` to define `autoload` sections.
-
-```json
-{
-    "name": "nelisys/laravel-package",
-    "description": "Learn how to create Laravel Package",
-    "require": {
-        "illuminate/support": "^7.1"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^5.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Nelisys\\LaravelPackage\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Nelisys\\LaravelPackage\\Tests\\": "tests/"
-        }
-    }
-}
-```
-
-Run `composer dump-autoload`
-
-```console
-$ composer dump-autoload
-Generated autoload files containing 647 classes
-```
-
 Run `phpunit`
 
 ```console
@@ -172,6 +157,7 @@ OK (1 test, 1 assertion)
 ## ServiceProvider
 
 ### ItemServiceProvider.php
+
 Create `src/ItemServiceProvider.php`
 
 ```php
@@ -305,7 +291,7 @@ Create a new Laravel project to use the created package.
 Note: in this case, the project and package are located in the same folder.
 
 ```console
-[laravel]$ composer create-project --prefer-dist laravel/laravel laravel-using-package
+$ composer create-project --prefer-dist laravel/laravel laravel-using-package
 ```
 
 `cd` into the project.
@@ -317,6 +303,7 @@ Note: in this case, the project and package are located in the same folder.
 add `repositories` in `composer.json`
 
 ```json
+    ...
     "repositories": [
         {
             "type": "path",
@@ -337,25 +324,6 @@ Install the package.
 lrwxr-xr-x  1 supasin  staff  24 Mar 14 11:01 laravel-package -> ../../../laravel-package
 ```
 
-Try using the package's class by edit `routes/web.php`
-
-```php
-<?php
-
-use Nelisys\LaravelPackage\Item;
-
-Route::get('/', function () {
-    return (new Item())->hello();
-});
-```
-
-Using `curl` to test the edited route.
-
-```console
-[laravel]$ curl http://laravel-using-package.test/
-hello
-```
-
 Verify the routes from the custom package
 
 ```console
@@ -373,3 +341,7 @@ Verify the routes from the custom package
 [laravel]$ curl http://laravel-using-package.test/hello
 hello
 ```
+
+## References
+
+[Laravel Package Development](https://laravel.com/docs/packages)
