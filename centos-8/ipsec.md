@@ -1,6 +1,7 @@
 # IPsec
 
 ## install
+
 ```console
 $ sudo yum install -y libreswan
 ```
@@ -9,9 +10,9 @@ default configuration
 
 ```console
 $ ls -ld /etc/ipsec.*
--rw-r--r--. 1 root root 1071 May 25 10:56 /etc/ipsec.conf
-drwx------. 3 root root   22 Oct 15 09:23 /etc/ipsec.d
--rw-------. 1 root root   31 May 25 10:56 /etc/ipsec.secrets
+-rw-r--r--. 1 root root 1071 Nov 11 22:34 /etc/ipsec.conf
+drwx------. 3 root root   22 Mar 19 14:28 /etc/ipsec.d
+-rw-------. 1 root root   31 Nov 11 22:34 /etc/ipsec.secrets
 
 $ cat /etc/ipsec.conf
 config setup
@@ -27,37 +28,30 @@ include /etc/ipsec.d/*.secrets
 
 $ sudo ls -l /etc/ipsec.d/
 total 0
-drwx------. 2 root root 120 Oct 15 09:23 policies
+drwx------. 2 root root 120 Mar 19 14:28 policies
 
 $ sudo ls -l /etc/ipsec.d/policies
-total 24
--rw-r--r--. 1 root root 395 May 25 10:56 block
--rw-r--r--. 1 root root 416 May 25 10:56 clear
--rw-r--r--. 1 root root 946 May 25 10:56 clear-or-private
--rw-r--r--. 1 root root 472 May 25 10:56 portexcludes.conf
--rw-r--r--. 1 root root 614 May 25 10:56 private
--rw-r--r--. 1 root root 728 May 25 10:56 private-or-clear
+-rw-r--r--. 1 root root 395 Nov 11 22:34 block
+-rw-r--r--. 1 root root 416 Nov 11 22:34 clear
+-rw-r--r--. 1 root root 946 Nov 11 22:34 clear-or-private
+-rw-r--r--. 1 root root 472 Nov 11 22:34 portexcludes.conf
+-rw-r--r--. 1 root root 614 Nov 11 22:34 private
+-rw-r--r--. 1 root root 728 Nov 11 22:34 private-or-clear
 ```
 
 ## init NSS database
 
-note: just enter for the password prompt
+```console
+$ sudo ipsec initnss
+Initializing NSS database
+```
 
 ```console
-$ sudo certutil -N -d sql:/etc/ipsec.d
-Enter a password which will be used to encrypt your keys.
-The password should be at least 8 characters long,
-and should contain at least one non-alphabetic character.
-
-Enter new password:
-Re-enter password:
-
 $ sudo ls -l /etc/ipsec.d
-total 68
--rw-------. 1 root root 28672 Oct 15 10:29 cert9.db
--rw-------. 1 root root 36864 Oct 15 10:29 key4.db
--rw-------. 1 root root   423 Oct 15 10:29 pkcs11.txt
-drwx------. 2 root root   120 Oct 15 09:23 policies
+-rw-------. 1 root root 28672 Mar 19 14:31 cert9.db
+-rw-------. 1 root root 36864 Mar 19 14:31 key4.db
+-rw-------. 1 root root   423 Mar 19 14:31 pkcs11.txt
+drwx------. 2 root root   120 Mar 19 14:28 policies
 ```
 
 ## start service
@@ -68,7 +62,7 @@ $ sudo systemctl start ipsec
 $ systemctl status ipsec
 ● ipsec.service - Internet Key Exchange (IKE) Protocol Daemon for IPsec
    Loaded: loaded (/usr/lib/systemd/system/ipsec.service; disabled; vendor preset: disabled)
-      Active: active (running) since Tue 2019-10-15 10:31:54 +07; 16s ago
+   Active: active (running) since Thu 2020-03-19 14:32:23 +07; 11s ago
 ```
 
 ## firewall rules
@@ -76,6 +70,10 @@ $ systemctl status ipsec
 ```console
 $ sudo firewall-cmd --add-service=ipsec
 success
+
+$ sudo firewall-cmd --add-rich-rule='rule protocol value="esp" accept'
+
+$ sudo firewall-cmd --runtime-to-permanent
 ```
 
 ## site to site
@@ -84,38 +82,32 @@ success
 
 ```console
 $ sudo ipsec newhostkey --output /etc/ipsec.d/hostkey.secrets
-Generated RSA key pair with CKAID b49ae187... was stored in the NSS database
+Generated RSA key pair with CKAID a4b0f0... was stored in the NSS database
 
 $ sudo ls -l /etc/ipsec.d/
-total 72
--rw-------. 1 root root 28672 Oct 15 10:33 cert9.db
--rw-------. 1 root root  1642 Oct 15 10:33 hostkey.secrets
--rw-------. 1 root root 36864 Oct 15 10:33 key4.db
--rw-------. 1 root root   423 Oct 15 10:29 pkcs11.txt
-drwx------. 2 root root   120 Oct 15 09:23 policies
+-rw-------. 1 root root 28672 Mar 19 14:34 cert9.db
+-rw-------. 1 root root  1829 Mar 19 14:34 hostkey.secrets
+-rw-------. 1 root root 36864 Mar 19 14:34 key4.db
+-rw-------. 1 root root   423 Mar 19 14:31 pkcs11.txt
+drwx------. 2 root root   120 Mar 19 14:28 policies
 
-$ sudo ipsec showhostkey --left --ckaid b49ae187...
-    # rsakey AwEAAe6Pk
-        leftrsasigkey=0sAwEAAe6Pk...
+$ sudo ipsec showhostkey --left --ckaid a4b0f0...
+    # rsakey AwEAAbHzz
+    leftrsasigkey=0sAwEA...
 ```
 
 ### right
 
 ```console
 $ sudo ipsec newhostkey --output /etc/ipsec.d/hostkey.secrets
+****
 Generated RSA key pair with CKAID 5a0811f8... was stored in the NSS database
 
 $ sudo ls -l /etc/ipsec.d/
-total 72
--rw-------. 1 root root 28672 Oct 15 10:35 cert9.db
--rw-------. 1 root root  1822 Oct 15 10:35 hostkey.secrets
--rw-------. 1 root root 36864 Oct 15 10:35 key4.db
--rw-------. 1 root root   423 Oct 15 10:31 pkcs11.txt
-drwx------. 2 root root   120 Oct 15 10:05 policies
+***
 
 $ sudo ipsec showhostkey --right --ckaid 5a0811f8...
-    # rsakey AwEAAcy2v
-        rightrsasigkey=0sAwEAAcy2v...
+***
 ```
 
 ### host to host
