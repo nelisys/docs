@@ -11,6 +11,8 @@ $ sudo apt install python3-rpi.gpio
 install by `pip3`
 
 ```console
+$ sudo apt-get install python3-pip
+
 $ sudo pip3 install RPi.GPIO
 ```
 
