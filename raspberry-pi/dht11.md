@@ -1,8 +1,10 @@
-# dht
+# DHT11
 
-## DHT11
+Specification
+ - Good for 20-80% humidity readings with 5% accuracy
+ - Good for 0-50°C temperature readings ±2°C accuracy
 
-Wiring
+## Wiring
 
 ```
  /-------\
@@ -10,9 +12,11 @@ Wiring
  +-------|
  | VCC   | - Pin #02 5v
  | DATA  | - Pin #12 GPIO18
- | GND   | - Pin #09 Ground
+ | GND   | - Pin #06 Ground
  \-------/
 ```
+
+## Installation
 
 ```console
 $ sudo pip3 install Adafruit_DHT
