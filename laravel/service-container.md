@@ -16,7 +16,7 @@ class Item
 
 Modify `routes/web.php` to `bind()` and `resolve()`.
 
-Note: can use `resolve` instead of `app()->make()`
+Note: can use `app()` or `resolve()` instead of `app()->make()`
 
 ```php
 // routes/web.php
@@ -27,6 +27,7 @@ app()->bind('item', function() {
 
 Route::get('/', function () {
     $item = app()->make('item');
+    // $item = app('item');
     // $item = resolve('item');
 
     var_dump($item);
