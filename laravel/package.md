@@ -245,6 +245,7 @@ Create `src/routes/web.php`
 ```php
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Nelisys\LaravelPackage\Item;
 
 Route::get('hello', function() {
@@ -282,6 +283,13 @@ PHPUnit 8.5.2 by Sebastian Bergmann and contributors.
 Time: 102 ms, Memory: 14.00 MB
 
 OK (1 test, 2 assertions)
+```
+
+add `.gitignore`
+
+```
+/vendor
+.phpunit.result.cache
 ```
 
 ## Using the package
