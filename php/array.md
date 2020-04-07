@@ -22,19 +22,49 @@ print_r($students);
 //             [name] => Bob
 //             [age] => 12
 //         )
-// 
+//
 //     [1] => Array
 //         (
 //             [name] => Chris
 //             [age] => 10
 //         )
-// 
+//
 //     [2] => Array
 //         (
 //             [name] => Alice
 //             [age] => 9
 //         )
-// 
+//
 // )
 
+```
+
+## array_filter()
+
+```php
+$students = [
+    ['name' => 'Alice', 'age' => 23],
+    ['name' => 'Bob', 'age' => 17],
+    ['name' => 'Chris', 'age' => 21],
+];
+
+print_r(array_filter($students, function($student) {
+    return $student['age'] > 18;
+}));
+
+// Array
+// (
+//     [0] => Array
+//         (
+//             [name] => Alice
+//             [age] => 23
+//         )
+//
+//     [2] => Array
+//         (
+//             [name] => Chris
+//             [age] => 21
+//         )
+//
+// )
 ```
