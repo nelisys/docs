@@ -26,12 +26,12 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         // ...
         'api' => [
-            // ...
             EnsureFrontendRequestsAreStateful::class,
+            // ...
         ],
 ```
 
-## Add HasApiTokens in User model
+## API Token Authentication
 
 add `HasApiTokens` in `User` model
 
@@ -45,8 +45,6 @@ class User extends Authenticatable
 {
     use Notifiable, HasApiTokens;
 ```
-
-## API Token Authentication
 
 add route `profile` in `routes/api.php`
 
@@ -433,4 +431,76 @@ Sanctum::actingAs(
     factory(User::class)->create(),
     ['tasks:view']
 );
+```
+
+## SPA Authentication
+
+Install `auth`
+
+```console
+$ composer require laravel/ui
+
+$ php artisan vue --auth
+```
+
+Edit `.env`
+
+```
+$ vi .env
+...
+SANCTUM_STATEFUL_DOMAINS=sanctum.test
+SESSION_DOMAIN=.sanctum.test
+```
+
+Protect api route
+
+```php
+// routes/api.php
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+```
+
+## SPA Authentication with VueJS on the same host
+
+```javascript
+async refresh() {
+    try {
+        // login
+        await axios.post('/login', {
+                email: 'alice@example.com',
+                password: 'secret',
+            })
+            .then(response => {
+                console.log('login');
+                console.log(response.status, response.statusText);
+            });
+
+        await axios.get('/api/user')
+            .then(response => {
+                console.log('user');
+                console.log(response.status, response.statusText);
+                console.log(response.data);
+            })
+
+        await axios.post('/logout')
+            .then(response => {
+                console.log('logout');
+                console.log(response.status, response.statusText);
+            });
+    } catch (error) {
+        console.log(error.response.status, error.response.statusText);
+    }
+
+// console.log
+login
+> 204 "No Content"
+
+user
+> 200 "OK"
+> {id: 1, name: "Alice", email: "alice@example.com", ...
+
+logout
+> 204 "No Content"
 ```
