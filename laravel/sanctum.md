@@ -325,3 +325,112 @@ $user->tokens()->delete();
 mysql> select * from personal_access_tokens \G
 Empty set (0.00 sec)
 ```
+
+## Token Abilities
+
+Modify `LoginController` by adding `$abilities` in `createToken()`
+
+```php
+// app/Http/Controllers/LoginController.php
+
+// ...
+        $abilities = [
+            'profile:view',
+            'items:view',
+        ];
+
+        return [
+            'token' => $user->createToken('access', $abilities)->plainTextToken,
+            'user' => $user,
+        ];
+```
+
+Note: Use `['*']` to grant all abilities
+
+Try `login`
+
+```console
+$ curl -i \
+    -H "X-Requested-With: XMLHttpRequest" \
+    -d "email=alice@example.com&password=secret" \
+    http://sanctum.test/api/login
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "user" : {
+      "name" : "Alice",
+      "updated_at" : "2020-04-10T06:49:38.000000Z",
+      "email" : "alice@example.com",
+      "email_verified_at" : null,
+      "created_at" : "2020-04-10T06:49:38.000000Z",
+      "id" : 1
+   },
+   "token" : "QIXh9P..."
+}
+```
+
+```
+mysql> select * from personal_access_tokens \G
+*************************** 1. row ***************************
+            id: 4
+tokenable_type: App\User
+  tokenable_id: 1
+          name: access
+         token: e5629f...
+     abilities: ["profile:view","items:view"]
+  last_used_at: NULL
+    created_at: 2020-04-10 07:47:09
+    updated_at: 2020-04-10 07:47:09
+1 row in set (0.00 sec)
+```
+
+edit `PageController` to check `abilities`
+
+```php
+// app/Http/Controllers/PageController.php
+
+    public function profile()
+    {
+        $user = auth()->user();
+
+        if ($user->tokenCan('profile:view')) {
+            echo 'User can view Profile.' . PHP_EOL;
+        }
+
+        if (! $user->tokenCan('profile:update')) {
+            echo 'User cannot update Profile.' . PHP_EOL;
+        }
+
+        return 'Profile of ' . optional(auth()->user())->name;
+    }
+```
+
+Try access `profile`
+
+```console
+$ curl -i \
+    -H "X-Requested-With: XMLHttpRequest" \
+    -H "Authorization: Bearer QIXh9P..." \
+    http://sanctum.test/api/profile
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+
+User can view Profile.
+User cannot update Profile.
+Profile of Alice
+```
+
+## Testing
+
+```php
+use App\User;
+use Laravel\Sanctum\Sanctum;
+
+Sanctum::actingAs(
+    factory(User::class)->create(),
+    ['tasks:view']
+);
+```
