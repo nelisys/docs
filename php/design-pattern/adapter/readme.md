@@ -1,4 +1,4 @@
-# Design Pattern : PHP Adapter
+# Design Pattern : Adapter
 
 ## Installation
 
