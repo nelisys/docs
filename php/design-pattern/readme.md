@@ -5,6 +5,7 @@
 - [Template Method](template-method/)
 - [Strategy](strategy/)
 - [Chain of Responsibilty](chain-of-responsibility/)
+- [Observer](observer/)
 
 ## References
 - [Design Patterns in PHP](https://laracasts.com/series/design-patterns-in-php/)
