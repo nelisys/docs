@@ -8,7 +8,20 @@ $ composer dump-autoload
 $ php index.php
 ```
 
-Try change the value in `src/HomeStatus.php`, and run `index.php`.
+## Example
+
+```php
+$lock = new Lock;
+$light = new Light;
+$alarm = new Alarm;
+
+$lock->setNext($light);
+$light->setNext($alarm);
+
+$lock->check($status);
+```
+
+Try change the value in `src/HomeStatus.php`, then run `index.php` and see the Exception thrown
 
 ```php
 class HomeStatus

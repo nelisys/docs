@@ -17,4 +17,3 @@ class User
 $user = new User;
 $user->log('Hello World!', new LogToFile);
 $user->log('Hello World!', new LogToDatabase);
-
