@@ -24,4 +24,4 @@ $veggies->make();
 ```
 
 ## References
-- [The Template Method Pattern](https://laracasts.com/series/design-patterns-in-php/episodes/3)
+- [Design Patterns in PHP : Episode 3 - The Template Method Pattern](https://laracasts.com/series/design-patterns-in-php/episodes/3)

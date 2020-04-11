@@ -17,4 +17,4 @@ $user->log('Hello World!', new LogToDatabase);
 ```
 
 ## References
-- [Pick a Strategy](https://laracasts.com/series/design-patterns-in-php/episodes/4)
+- [Design Patterns in PHP : Episode 4 - Pick a Strategy](https://laracasts.com/series/design-patterns-in-php/episodes/4)

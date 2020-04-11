@@ -33,4 +33,4 @@ class HomeStatus
 ```
 
 ## References
-- [The Chain of Responsibility](https://laracasts.com/series/design-patterns-in-php/episodes/5)
+- [Design Patterns in PHP : Episode 5 - The Chain of Responsibility](https://laracasts.com/series/design-patterns-in-php/episodes/5)

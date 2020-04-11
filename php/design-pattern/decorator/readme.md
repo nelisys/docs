@@ -17,4 +17,4 @@ $all_services = new TireRotation((new OilChange($basic)));
 ```
 
 ## References
-- [The Decorator Pattern](https://laracasts.com/series/design-patterns-in-php/episodes/1)
+- [Design Patterns in PHP : Episode 1 - The Decorator Pattern](https://laracasts.com/series/design-patterns-in-php/episodes/1)
