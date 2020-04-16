@@ -98,6 +98,13 @@ Package operations: 4 installs, 0 updates, 0 removals
 
 Only `carbon` will be installed.
 
+## Set Stability to install developing packages
+
+```
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+```
+
 ## proxy
 
 set proxy
