@@ -440,7 +440,7 @@ Install `auth`
 ```console
 $ composer require laravel/ui
 
-$ php artisan vue --auth
+$ php artisan ui vue --auth
 ```
 
 Edit `.env`
