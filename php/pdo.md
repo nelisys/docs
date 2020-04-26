@@ -7,6 +7,14 @@ $db = new PDO("mysql:host={$db_host};dbname=db;charset=utf8", $db_username, $db_
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```
 
+For large results, if found `PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted`
+
+Tips: Use `memory_get_usage()` to show memory usage.
+
+```php
+$db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
+```
+
 ## query
 
 ```php
@@ -42,4 +50,3 @@ $db->lastInsertId();
 ```php
 $affected_rows = $db->exec("DELETE FROM students");
 ```
-
