@@ -89,7 +89,7 @@ xserver-command=X -nocursor
 ```
 $ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
 ...
-@chromium-browser --kiosk https://www.google.com/
+@chromium-browser --kiosk --app=https://www.google.com/
 ```
 
 ## References

@@ -19,5 +19,5 @@ $ cat .config/lxsession/LXDE-pi/autostart
 #@xset s off
 #@xset -dpms
 #@xset s noblank
-#@chromium-browser --kiosk https://www.google.com/
+#@chromium-browser --kiosk --app=https://www.google.com/
 ```
