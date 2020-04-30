@@ -92,6 +92,16 @@ $ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
 @chromium-browser --kiosk --app=https://www.google.com/
 ```
 
+## Disable Blank screen
+
+```
+$ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
+...
+@xset s off
+@xset -dpms
+@xset s noblank
+```
+
 ## References
 - [Customizing Boot Up Screen on Raspberry Pi](https://scribles.net/customizing-boot-up-screen-on-raspberry-pi/)
 
