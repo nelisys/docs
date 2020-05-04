@@ -50,3 +50,9 @@ $db->lastInsertId();
 ```php
 $affected_rows = $db->exec("DELETE FROM students");
 ```
+
+## count
+
+```php
+$count = $db->query("SELECT count(*) FROM items")->fetchColumn();
+```

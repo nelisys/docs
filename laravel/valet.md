@@ -26,3 +26,27 @@ $ valet paths
     "/Users/supasin/Sites"
 ]
 ```
+
+## PHP
+
+### Configuration Files
+
+- /usr/local/etc/php/7.2/php.ini
+
+### Restart Service
+
+```console
+$ sudo brew services restart php@7.2
+```
+
+## nginx
+
+### Configuration files
+
+- /usr/local/etc/nginx/valet/valet.conf
+
+## Restart Service
+
+```console
+$ sudo brew services restart nginx
+```
