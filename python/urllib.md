@@ -1,5 +1,7 @@
 # urllib
 
+## request
+
 ```python
 import urllib.parse
 import urllib.request
@@ -33,4 +35,16 @@ def http(url):
 
     except Exception as ex:
         print(str(ex))
+```
+
+## query parameters
+
+```python
+from urllib import parse
+
+url = "/test?id=123&name=abc"
+query = parse.parse_qs(parse.urlsplit(url).query)
+
+print(query['id'])
+# ['123']
 ```
