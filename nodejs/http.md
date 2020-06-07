@@ -26,4 +26,26 @@ Hello World!
 req.url = /students?name=alice
 ```
 
+## request data
 
+```javascript
+const http = require('http');
+
+http.createServer((req, res) => {
+    req.on('data', (chunk) => {
+        let str = chunk.toString();
+
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(`data = ${str}`);
+    });
+
+    req.on('end', () => {
+        res.end();
+    });
+}).listen(8000);
+```
+
+```console
+$ curl -d 'id=1&name=alice' http://127.0.0.1:8000
+data = id=1&name=alice
+```
