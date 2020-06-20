@@ -42,3 +42,49 @@ const {name, age} = student;
 // name = Alice
 // age = 15
 ```
+
+## Copy Object
+
+### = operator
+
+```javascript
+const alice = {
+    id: 1,
+    name: 'Alice'
+};
+
+const bob = alice;
+
+console.log(bob);
+// { id: 1, name: 'Alice' }
+
+bob.name = 'Bob';
+
+console.log(bob);
+// { id: 1, name: 'Bob' }
+
+console.log(alice);
+// { id: 1, name: 'Bob' }
+```
+
+### Object.assign()
+
+```javacript
+const alice = {
+    id: 1,
+    name: 'Alice'
+};
+
+const bob = Object.assign({}, alice, {id: 2});
+
+console.log(bob);
+// { id: 2, name: 'Alice' }
+
+bob.name = 'Bob';
+
+console.log(bob);
+// { id: 2, name: 'Bob' }
+
+console.log(alice);
+// { id: 1, name: 'Alice' }
+```
