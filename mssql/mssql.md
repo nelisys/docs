@@ -1,5 +1,7 @@
 # mssql
 
+## schema
+
 query all table names
 
 ```sql

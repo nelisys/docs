@@ -13,6 +13,7 @@ Tips: Use `memory_get_usage()` to show memory usage.
 
 ```php
 $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
+$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 ```
 
 ## query
@@ -22,7 +23,7 @@ $stmt = $db->query("SELECT * FROM students");
 
 echo $stmt->rowCount() . "\n";
 
-while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+while($row = $stmt->fetch()) {
     // ex: $row->id
 }
 ```
