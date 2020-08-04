@@ -13,6 +13,9 @@ running
 $ sudo firewall-cmd --list-services
 dhcpv6-client ssh
 
+$ sudo firewall-cmd --add-service http
+success
+
 $ sudo firewall-cmd --list-ports
 
 $ sudo firewall-cmd --list-all
