@@ -7,6 +7,14 @@ $ npx create-react-app my-react
 
 $ cd my-react/
 
+$ ls -1F
+README.md
+node_modules/
+package.json
+public/
+src/
+yarn.lock
+
 $ yarn start
 ```
 
