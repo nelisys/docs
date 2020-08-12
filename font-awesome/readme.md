@@ -1,0 +1,18 @@
+# Font Awesome
+
+## installation
+
+```
+$ npm install --save-dev @fortawesome/fontawesome-free
+```
+
+## laravel
+
+```
+...
+// resources/sass/app.scss
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+```
