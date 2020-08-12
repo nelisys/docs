@@ -4,7 +4,9 @@
 
 - Download the Microsoft Drivers for PHP for SQL Server
 
-- edit `php.ini`
+copy files to `C:\xampp\php\ext`
+
+- edit `C:\xampp\php\php.ini`
 
 ```
 ...
