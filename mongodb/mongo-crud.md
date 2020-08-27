@@ -93,6 +93,17 @@ find with projection
 { "_id" : ObjectId("5d513d350584f63efd88ceb3"), "name" : "Bob" }
 ```
 
+
+### query key exists
+
+```
+> db.students.find({
+    'contact.phone': {
+        $exists : true
+    }
+});
+```
+
 ## update
 
 ```
