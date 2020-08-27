@@ -1,0 +1,5 @@
+# sysctl
+
+```
+$ sudo sysctl --system
+```
