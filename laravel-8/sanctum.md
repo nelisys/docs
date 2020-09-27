@@ -14,12 +14,10 @@ $ php artisan migrate
 
 ### Edit User model and API route files
 
-Add `HasApiTokens` in `User` model.
+Add `HasApiTokens` trait in `User` model.
 
 ```php
 // app/Models/User.php
-
-// ...
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -39,7 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 ### Create test user and token
 
 Run `php artisan tinker` to
-- Create test user 'alice@example.com'
+- Create test user `alice@example.com`
 
 ```php
 $user = App\Models\User::create([
@@ -134,4 +132,54 @@ $user->tokens()->delete();
 ```
 mysql> select * from personal_access_tokens;
 Empty set (0.00 sec)
+```
+
+## SPA Authentication
+
+
+`.env`
+
+```
+SANCTUM_STATEFUL_DOMAINS=l8.test
+```
+
+### React
+
+```javascript
+// webpack.mix.js
+mix.react('resources/js/app.js', 'public/js')
+```
+
+```javascript
+// resources/js/app.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import axios from 'axios';
+
+function App() {
+    let data = {
+        email: 'alice@example.com',
+        password: 'secret',
+    };
+
+    axios.post('/login', data)
+        .then(response => {
+            axios.get('/api/user')
+                .then(response => {
+                    console.log(response.data);
+                });
+    });
+
+    return (
+        <div>App</div>
+    );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+```
+// console.log(response.data);
+{id: 1, name: "Alice", email: "alice@example.com", email_verified_at: null, created_at: ...
 ```
