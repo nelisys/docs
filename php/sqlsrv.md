@@ -1,6 +1,6 @@
 # sqlsrv
 
-## installation
+## installation ubuntu
 
 ```console
 $ curl -O https://packages.microsoft.com/keys/microsoft.asc
@@ -63,3 +63,11 @@ try {
 // - Invalid database
 // SQLSTATE[42000]: [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open database "some_db" requested by the login. The login failed.
 ```
+
+## installation mac
+
+```
+$ sudo pecl install sqlsrv
+$ sudo pecl install pdo_sqlsrv
+```
+
