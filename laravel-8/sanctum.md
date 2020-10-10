@@ -201,7 +201,7 @@ function App() {
 
 #### Login fail
 
-```
+```javascript
    try {
         login = await axios.post('/login', {});
         // 422 "Unprocessable Entity"

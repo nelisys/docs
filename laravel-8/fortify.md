@@ -66,3 +66,34 @@ App\Models\User::create([
   'password' => bcrypt('secret'),
 ]);
 ```
+
+## Change email to username
+
+```php
+// config/fortify.php
+    'username' => 'username',
+```
+
+```php
+// app/Models/User.php
+    protected $fillable = [
+        'username',
+```
+
+```php
+// database/migrations/2014_10_12_000000_create_users_table.php
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('username')->unique();
+```
+
+```php
+// database/factories/UserFactory.php
+    public function definition()
+    {
+        return [
+            'username' => $this->faker->userName,
+        ];
+```
