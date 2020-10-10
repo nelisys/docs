@@ -34,13 +34,21 @@ $ php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 // resources/views/auth/login.blade.php
 <form method="POST" action="/login">
     @csrf
-    Email: <input type="text" name="email" value="admin@example.com">
+    Email: <input type="text" name="email" value="alice@example.com">
     <br>
 
     Password: <input type="password" name="password" value="secret">
     <br>
     <button type="submit">submit</button>
 </form>
+
+@if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
 ```
 
 ## Create test user
@@ -53,8 +61,8 @@ $ php artisan migrate:fresh
 $ php artisan tinker
 
 App\Models\User::create([
-  'email' => 'admin@example.com',
-  'name' => 'Admin',
+  'email' => 'alice@example.com',
+  'name' => 'Alice',
   'password' => bcrypt('secret'),
 ]);
 ```

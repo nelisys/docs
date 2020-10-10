@@ -10,6 +10,29 @@ $ php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 $ php artisan migrate
 ```
 
+## Creat Test User
+
+Run `php artisan tinker` to create test user `alice@example.com`
+
+```php
+$user = App\Models\User::create([
+    'email' => 'alice@example.com',
+    'password' => bcrypt('secret'),
+    'name' => 'Alice',
+]);
+```
+
+## Modify route api
+
+In `routes/api.php` change middleware to `auth:sanctum`.
+
+```php
+// routes/api.php
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+```
+
 ## API Token Authentication
 
 ### Edit User model and API route files
@@ -25,27 +48,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 ```
 
-In `routes/api.php` change middleware to `auth::sanctum`.
-
-```php
-// routes/api.php
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-```
-
-### Create test user and token
-
-Run `php artisan tinker` to
-- Create test user `alice@example.com`
-
-```php
-$user = App\Models\User::create([
-    'email' => 'alice@example.com',
-    'password' => bcrypt('secret'),
-    'name' => 'Alice',
-]);
-```
+### Create user token
 
 - Create token by using method `createToken()`
 
@@ -136,11 +139,23 @@ Empty set (0.00 sec)
 
 ## SPA Authentication
 
-
-`.env`
+Specify stateful domains in `.env`
 
 ```
 SANCTUM_STATEFUL_DOMAINS=l8.test
+```
+
+Add `EnsureFrontendRequestsAreStateful` to the list of `api` middleware in `app/Http/Kernel.php`
+
+```php
+// app/Http/Kernel.php
+    // ...
+    protected $middlewareGroups = [
+        // ...
+        'api' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            // ...
+        ],
 ```
 
 ### React
