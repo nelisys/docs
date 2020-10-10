@@ -97,3 +97,26 @@ App\Models\User::create([
             'username' => $this->faker->userName,
         ];
 ```
+
+## Custom Login
+
+Example, only active users allowed to login
+
+```php
+// app/Providers/FortifyServiceProvider.php
+    public function boot()
+    {
+        // ...
+        Fortify::authenticateUsing(function (Request $request) {
+            $username = config('fortify.username');
+
+            $user = User::where($username, $request->{$username})
+                ->where('is_active', true)
+                ->first();
+
+            if ($user &&
+                Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+        });
+```
