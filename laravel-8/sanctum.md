@@ -10,7 +10,7 @@ $ php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 $ php artisan migrate
 ```
 
-## Creat Test User
+### Create Test User
 
 Run `php artisan tinker` to create test user `alice@example.com`
 
@@ -22,7 +22,7 @@ $user = App\Models\User::create([
 ]);
 ```
 
-## Modify route api
+### Modify route api
 
 In `routes/api.php` change middleware to `auth:sanctum`.
 
@@ -160,41 +160,61 @@ Add `EnsureFrontendRequestsAreStateful` to the list of `api` middleware in `app/
 
 ### React
 
-```javascript
-// webpack.mix.js
-mix.react('resources/js/app.js', 'public/js')
-```
+#### Login success
 
 ```javascript
 // resources/js/app.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-
+// ...
 import axios from 'axios';
 
-function App() {
+async function login() {
     let data = {
         email: 'alice@example.com',
         password: 'secret',
     };
 
-    axios.post('/login', data)
-        .then(response => {
-            axios.get('/api/user')
-                .then(response => {
-                    console.log(response.data);
-                });
-    });
+    try {
+        let login = await axios.post('/login', data);
+        console.log(login.status, login.statusText);
+        // 200 "OK"
+
+        let user = await axios.get('/api/user', data);
+        console.log(user.data);
+        // {id: 2, name: "Alice", email: "alice@example.com", ...
+
+        let logout = await axios.post('/logout', data);
+        console.log(logout.status, logout.statusText);
+        // 204 "No Content"
+    } catch (error) {
+        console.log(error.response.status, error.response.statusText);
+    }
+}
+
+function App() {
+    login();
 
     return (
         <div>App</div>
     );
 }
-
-ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
+#### Login fail
+
 ```
-// console.log(response.data);
-{id: 1, name: "Alice", email: "alice@example.com", email_verified_at: null, created_at: ...
+   try {
+        login = await axios.post('/login', {});
+        // 422 "Unprocessable Entity"
+        // The email field is required
+
+        login = await axios.post('/login', {email: 'invalid', password: 'invalid'});
+        // 422 "Unprocessable Entity"
+        // These credentials do not match our records.
+
+        // 429 "Too Many Requests"
+        // Too many login attempts. Please try again in 30 seconds.
+    } catch (error) {
+        console.log(error.response.status, error.response.statusText);
+        console.log(error.response.data.errors.email[0]);
+    }
 ```
