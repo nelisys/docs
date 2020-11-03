@@ -99,3 +99,90 @@ Run test.
 ```
 $ npm run test
 ```
+
+## React
+
+```
+$ npm install --save-dev react react-dom
+
+$ npm install --save-dev @babel/preset-react
+```
+
+`package.json`
+
+```json
+{
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-jest": "^26.6.2",
+    "jest": "^26.6.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+  }
+}
+```
+
+```javascript
+// Hello.js
+import React from 'react';
+
+function Hello(props) {
+    if (! props.name) {
+        return <span>Hi Guest</span>
+    }
+
+    return <span>Hello {props.name}</span>
+}
+
+export default Hello;
+```
+
+```javascript
+// Hello.test.js
+import React from 'react';
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from 'react-dom/test-utils';
+
+import Hello from './Hello';
+
+let container = null;
+
+beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+});
+
+afterEach(() => {
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+});
+
+it('renders Hello', () => {
+    // case 1
+    act(() => {
+        render(<Hello />, container);
+    });
+
+    expect(container.textContent).toBe('Hi Guest');
+
+    // case 2
+    act(() => {
+        render(<Hello name="Alice" />, container);
+    });
+
+    expect(container.textContent).toBe('Hello Alice');
+});
+```
+
+```
+$ npm run test
+```
