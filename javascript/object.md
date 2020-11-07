@@ -88,3 +88,75 @@ console.log(bob);
 console.log(alice);
 // { id: 1, name: 'Alice' }
 ```
+
+## Adding Property
+
+### .property
+
+```javascript
+const student = { id: 1, name: 'Alice' };
+
+student.age = 15;
+console.log(student);
+// { id: 1, name: 'Alice', age: 15 }
+```
+
+### ... : no mutation
+
+```javascript
+const student = { id: 1, name: 'Alice' };
+
+console.log({ ...student, age: 15 });
+// { id: 1, name: 'Alice', age: 15 }
+
+console.log(student);
+// { id: 1, name: 'Alice' }
+```
+
+## Updating Property
+
+### .property
+
+```javascript
+const student = { id: 1, name: 'Alice' };
+
+student.name = 'NewAlice';
+console.log(student);
+// { id: 1, name: 'NewAlice' }
+```
+
+### ... : no mutation
+
+```javascript
+const student = { id: 1, name: 'Alice' };
+
+console.log({ ...student, name: 'NewAlice' });
+// { id: 1, name: 'NewAlice' }
+
+console.log(student);
+// { id: 1, name: 'Alice' }
+```
+
+## Removing Property
+
+### delete()
+
+```javascript
+const student = { id: 1, name: 'Alice' };
+
+delete student.name;
+console.log(student);
+// { id: 1 }
+```
+
+### ... : no mutation
+
+```javascript
+const student = { id: 1, name: 'Alice' };
+
+console.log({ ...student, name: undefined });
+// { id: 1, name: undefined }
+
+console.log(student);
+// { id: 1, name: 'Alice' }
+```

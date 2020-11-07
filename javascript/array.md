@@ -145,3 +145,75 @@ let students = ['Alice', 'Bob', 'Chris', 'Dan'];
 students.join(', ');
 // Alice, Bob, Chris, Dan
 ```
+
+## Adding Element
+
+### push()
+
+```javascript
+const students = ['Alice', 'Bob'];
+
+students.push('Chris');
+console.log(students);
+// [ 'Alice', 'Bob', 'Chris' ]
+```
+
+### ... : no mutation
+
+```javascript
+const students = ['Alice', 'Bob'];
+
+console.log([...students, 'Chris']);
+// [ 'Alice', 'Bob', 'Chris' ]
+
+console.log(students);
+// [ 'Alice', 'Bob' ]
+```
+
+## Updating Element
+
+### [index]
+
+```javascript
+const students = ['Alice', 'Bob', 'Chris'];
+
+students[1] = 'NewBob';
+console.log(students);
+// [ 'Alice', 'NewBob', 'Chris' ]
+```
+
+### map() : no mutation
+
+```javascript
+const students = ['Alice', 'Bob', 'Chris'];
+
+console.log(students.map(student => student === 'Bob' ? 'NewBob' : student));
+[ 'Alice', 'NewBob', 'Chris' ]
+
+console.log(students);
+[ 'Alice', 'Bob', 'Chris' ]
+```
+
+## Removing Element
+
+### pop()
+
+```javascript
+const students = ['Alice', 'Bob', 'Chris'];
+
+students.pop();
+console.log(students);
+// [ 'Alice', 'Bob' ]
+```
+
+### filter() : no mutation
+
+```javascript
+const students = ['Alice', 'Bob', 'Chris'];
+
+console.log(students.filter(student => student != 'Bob'));
+// [ 'Alice', 'Chris' ]
+
+console.log(students);
+// [ 'Alice', 'Bob', 'Chris' ]
+```
