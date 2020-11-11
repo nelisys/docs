@@ -1,5 +1,7 @@
 # os
 
+## cpus()
+
 `os.cpus()` returns all logical CPU core
 
 ```javascript
@@ -20,4 +22,13 @@ os.cpus();
 //     },
 // 
 //     ...
+```
+
+## type()
+
+```javascript
+os.type();
+// Darwin
+// Linux
+// Windows
 ```
