@@ -187,8 +187,8 @@ it('renders Hello', () => {
 $ npm run test
 ```
 
-## filter some test
+## filter some test file
 
 ```
-jest -t 'some test'
+$ npm test -- <test-file>
 ```
