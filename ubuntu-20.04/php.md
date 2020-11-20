@@ -8,5 +8,6 @@ $ sudo apt install php-zip \
     php-xml \
     php-pdo-sqlite \
     php-pdo-mysql \
-    php-gd
+    php-gd \
+    php-curl
 ```
