@@ -11,3 +11,9 @@
     ...
   },
 ```
+
+## React Testing Library
+
+- getBy : throw exception if not found
+- queryBy
+- findBy : async
