@@ -21,6 +21,14 @@ SELECT name, last_user_update
  WHERE database_id = db_id()
 ```
 
+query table's disk usage
+
+```
+EXEC sp_spaceused N'students';
+```
+
+## backup
+
 backup db with compression
 
 ```sql
