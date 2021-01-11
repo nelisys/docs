@@ -1,7 +1,7 @@
 # Laravel 8 : react
 
 ```
-$ npm install --save-dev react react-dom
+$ npm install --save-dev react react-dom @babel/preset-react
 ```
 
 ```javascript
