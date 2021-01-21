@@ -10,6 +10,10 @@
 
 ## visudo
 
-## update-alternative editor
+## update-alternatives
+
+```
+$ update-alternatives --config editor
+```
 
 ## vimrc
