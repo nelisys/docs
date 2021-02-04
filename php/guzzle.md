@@ -26,3 +26,17 @@ $response = $client->get('/', [
 
 $data = json_decode($response->getBody(), true);
 ```
+
+## JSON POST
+
+```php
+$client = new \GuzzleHttp\Client();
+
+$r = $client->post('http://example.com/api, [
+    'json' => [
+        'name' => 'Alice',
+    ],
+]);
+
+echo $r->getBody()->getContents();
+```
