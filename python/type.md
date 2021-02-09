@@ -1,14 +1,14 @@
 # Type
 
 ```python
-a = 12
-b = 'hello'
-c = b'world'
+age = 32
+name = 'Alice'
+mesg = b'Hello'
 
-print(type(a))  # int
-print(type(b))  # str
-print(type(c))  # bytes
+print(type(age))   # int
+print(type(name))  # str
+print(type(mesg))  # bytes
 
-print(type(b.encode('ascii'))) # str -> bytes
-print(type(c.decode('ascii'))) # bytes -> str
+print(type(name.encode('ascii'))) # str -> bytes
+print(type(mesg.decode('ascii'))) # bytes -> str
 ```
