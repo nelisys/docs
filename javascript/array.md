@@ -35,6 +35,20 @@ console.log(students.filter(student => {
 // [ { name: 'Bob', age: 16 }, { name: 'Chris', age: 18 } ]
 ```
 
+## find
+
+```javascript
+const students = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Chris' },
+];
+
+console.log(students.find(student => student.id == 2));
+
+// { id: 2, name: 'Bob' }
+```
+
 ## in array
 
 ### indexOf() ES5
