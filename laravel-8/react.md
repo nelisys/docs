@@ -6,9 +6,9 @@ $ npm install --save-dev react react-dom @babel/preset-react
 
 ```javascript
 // webpack.mix.js
-mix.react('resources/js/app.js', 'public/js')
-    .sourceMaps()
-    .version();
+mix.js('resources/js/app.js', 'public/js')
+    .react()
+    .version()
 ```
 
 ```javascript
