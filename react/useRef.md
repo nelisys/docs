@@ -4,16 +4,16 @@
 import { useRef } from 'react';
 
 function Search() {
-    const refYear = useRef();
+    const yearRef = useRef();
 
     function submitHanlder(event) {
         event.preventDefault();
-        console.log(refYear.current.value);
+        console.log(yearRef.current.value);
     }
 
     return (
         <form>
-            <select id="year" ref={refYear}>
+            <select id="year" ref={yearRef}>
                 <option value="">-- select --</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
