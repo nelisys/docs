@@ -17,3 +17,9 @@ print(array)
 print(' Hello '.strip())
 # Hello
 ```
+
+## replace
+
+```
+print('Hello World'.replace('ld', 'k'))
+```
