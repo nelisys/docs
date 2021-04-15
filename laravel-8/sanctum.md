@@ -178,11 +178,11 @@ async function login() {
         console.log(login.status, login.statusText);
         // 200 "OK"
 
-        let user = await axios.get('/api/user', data);
+        let user = await axios.get('/api/user');
         console.log(user.data);
         // {id: 2, name: "Alice", email: "alice@example.com", ...
 
-        let logout = await axios.post('/logout', data);
+        let logout = await axios.post('/logout');
         console.log(logout.status, logout.statusText);
         // 204 "No Content"
     } catch (error) {
