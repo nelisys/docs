@@ -19,7 +19,7 @@ function ProductList() {
 export default ProductList;
 ```
 
-```
+```javascript
 // src/ProductItem.js
 function ProductItem(props) {
     return <li>{props.name}</li>;
@@ -30,7 +30,9 @@ export default ProductItem;
 
 ## Test file
 
-```
+### Setup Enzyme
+
+```javascript
 // src/Product.test.js
 import Enzyme, { shallow, render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -40,30 +42,27 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 Enzyme.configure({ adapter: new Adapter() });
 
 import ProductList from './ProductList';
-
-it('test shallow of ProductList', () => {
-    const wrapper = shallow(<ProductList />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-});
-
-it('test mount of ProductList', () => {
-    const wrapper = mount(<ProductList />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-});
-
-it('test render of ProductList', () => {
-    const wrapper = render(<ProductList />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-});
 ```
 
-## Run test
+Run test
 
 ```
 $ npm test src/Product.test.js
 ```
 
-## Snapshot file
+### Shallow Rendering
+
+```javascript
+it('test shallow of ProductList', () => {
+    const wrapper = shallow(<ProductList />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+
+    // more
+    expect(wrapper.find(ProductItem).length).toBe(3);
+});
+```
+
+Snapshot file
 
 ```javascript
 // src/__snapshots__/Product.test.js.snap
@@ -81,7 +80,20 @@ exports[`test shallow of ProductList 1`] = `
   />
 </ul>
 `;
+```
 
+### Full DOM Rendering (mount)
+
+```javascript
+it('test mount of ProductList', () => {
+    const wrapper = mount(<ProductList />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+});
+```
+
+Snapshot file
+
+```javascript
 exports[`test mount of ProductList 1`] = `
 <ProductList>
   <ul>
@@ -109,7 +121,20 @@ exports[`test mount of ProductList 1`] = `
   </ul>
 </ProductList>
 `;
+```
 
+### Static Rendering (render)
+
+```javascript
+it('test render of ProductList', () => {
+    const wrapper = render(<ProductList />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+});
+```
+
+Snapshot file
+
+```javascript
 exports[`test render of ProductList 1`] = `
 <ul>
   <li>
