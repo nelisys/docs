@@ -202,3 +202,70 @@ Aliases:
 11.1.168.192.in-addr.arpa domain name pointer www.example.com.
 ```
 
+## Master & Slave Configuration
+
+### Master (dns-1)
+
+```
+options {
+    ...
+    allow-transfer { localhost; 192.168.1.2; };
+    ...
+};
+```
+
+### Slave (dns-2)
+
+```
+// named.conf.local
+zone "example.com" IN {
+    type slave;
+    masters { 192.168.1.1; };
+    file "/var/cache/bind/db.example.com";
+};
+```
+
+```
+$ sudo systemctl restart named
+```
+
+```
+$ systemctl status named
+...
+May 10 16:09:54 dns-2 named[2419]: zone example.com/IN: Transfer started.
+May 10 16:09:54 dns-2 named[2419]: transfer of 'example.com/IN' from 192.168.1.1#53: connected using 192.168.1.2#50193
+May 10 16:09:54 dns-2 named[2419]: zone example.com/IN: transferred serial 2021100501
+May 10 16:09:54 dns-2 named[2419]: transfer of 'example.com/IN' from 192.168.1.1#53: Transfer status: success
+May 10 16:09:54 dns-2 named[2419]: transfer of 'example.com/IN' from 192.168.1.1#53: Transfer completed: 1 messages, 8 records, 214 bytes, 0.004 secs (53500 bytes/sec)
+May 10 16:09:54 dns-2 named[2419]: zone example.com/IN: sending notifies (serial 2021100501)
+```
+
+```
+$ ls -l /var/cache/bind/db.example.com
+-rw-r--r-- 1 bind bind 357 May 10 16:09 /var/cache/bind/db.example.com
+```
+
+```
+$ host www.example.com 192.168.1.2
+Using domain server:
+Name: 192.168.1.2
+Address: 192.168.1.2#53
+Aliases:
+
+www.example.com has address 192.168.1.11
+```
+
+Try change zone data on the Master, the Slave will received notify.
+
+Don't forget to change serial number.
+
+```
+May 10 16:21:29 dns-2 named[2419]: client @0x6f... 192.168.1.1#35880: received notify for zone 'example.com'
+May 10 16:21:29 dns-2 named[2419]: zone example.com/IN: notify from 192.168.1.1#35880: serial 2021100502
+May 10 16:21:29 dns-2 named[2419]: zone example.com/IN: Transfer started.
+May 10 16:21:29 dns-2 named[2419]: transfer of 'example.com/IN' from 192.168.1.1#53: connected using 192.168.1.2#33291
+May 10 16:21:29 dns-2 named[2419]: zone example.com/IN: transferred serial 2021100502
+May 10 16:21:29 dns-2 named[2419]: transfer of 'example.com/IN' from 192.168.1.1#53: Transfer status: success
+May 10 16:21:29 dns-2 named[2419]: transfer of 'example.com/IN' from 192.168.1.1#53: Transfer completed: 1 messages, 10 records, 254 bytes, 0.004 secs (63500 bytes/sec)
+May 10 16:21:29 dns-2 named[2419]: zone example.com/IN: sending notifies (serial 2021100502)
+```
