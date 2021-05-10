@@ -14,4 +14,6 @@ $ npm -v
 6.9.0
 ```
 
-
+```
+$ sudo apt-get install gcc g++ make
+```
