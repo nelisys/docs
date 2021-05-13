@@ -58,7 +58,7 @@ mysql> SET FOREIGN_KEY_CHECKS=1;
 ```
 $ vi ~/.my.cnf
 [mysql]
-prompt="\u@\d> "
+prompt="\u@\h:\d> "
 ```
 
 ```
