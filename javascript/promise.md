@@ -44,3 +44,16 @@ timer(2000).then((response) => {
 // reject()
 // catch() error = { code: 1 }
 ```
+
+## all()
+
+```javascript
+const promise1 = axios.get('/api/customers');
+const promise2 = axios.get('/api/products');
+const promise3 = axios.get('/api/currencies');
+
+Promise.all([promise1, promise2, promise3])
+    .then(function([res1, res2, res3]) {
+        console.log(res1);
+    });
+```
