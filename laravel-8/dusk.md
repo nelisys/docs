@@ -156,4 +156,6 @@ $browser->assertQueryStringHas($name, $value);
 $browser->assertScript('document.readyState', 'complete');
 
 $browser->assertInputValue($field, $value);
+
+$browser->assertSeeIn($selector, $value);
 ```
