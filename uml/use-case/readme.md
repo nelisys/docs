@@ -54,7 +54,7 @@ Example:
 
 ## Example
 
-(use-case-example.png)
+![Use Case Example](use-case-example.png)
 
 ## References
 

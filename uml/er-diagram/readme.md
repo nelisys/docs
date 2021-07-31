@@ -2,11 +2,11 @@
 
 ## Cardinality
 
-(er-diagram-cardinality.png)
+![ER Diagram Cardinality](er-diagram-cardinality.png)
 
 ## Example
 
-(er-diagram-example.png)
+![ER Diagram Example](er-diagram-example.png)
 
 ## References
 
