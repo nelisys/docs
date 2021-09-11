@@ -30,7 +30,7 @@ $ npm run dev
 ```
 
 ```php
-// resources/views/home.blade.php
+// resources/views/app.blade.php
 <!doctype html>
 <html>
 <body>
@@ -38,4 +38,10 @@ $ npm run dev
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
+```
+
+```
+// routes/web.php
+Route::view('/{any?}', 'app')
+    ->where('any', '.*');
 ```
