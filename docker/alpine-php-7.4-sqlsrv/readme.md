@@ -47,7 +47,7 @@ RUN apk del autoconf make g++ unixodbc-dev
 RUN apk add php7-curl php7-gd php7-gettext php7-mbstring php7-xml php7-zip
 RUN apk add php7-pdo_mysql php7-pdo_sqlite
 RUN apk add php7-json php7-phar
-RUN apk add php7-dom php7-fileinfo php7-tokenizer php7-xmlwriter
+RUN apk add php7-dom php7-fileinfo php7-session php7-tokenizer php7-xmlwriter
 
 #-------------------------------------------------------------------------------
 # composer
