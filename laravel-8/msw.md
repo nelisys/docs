@@ -52,16 +52,20 @@ afterAll(() => server.close());
 
 ```javascript
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import StudentList from './StudentList';
 
 test('render students', async () => {
     render(<StudentList />);
 
-    const students = await screen.findAllByRole('listitem')
+    // assert students mocked in 'handlers.js'
+    await waitFor(async () => {
+        const students = await screen.findAllByRole('listitem')
+        expect(students).toHaveLength(3);
 
-    // 3 = number of students defined in 'handlers.js'
-    expect(students).toHaveLength(3);
+        const names = students.map(student => student.textContent);
+        expect(names).toEqual(['Alice', 'Bob', 'Chris']);
+    });
 });
 ```
 
