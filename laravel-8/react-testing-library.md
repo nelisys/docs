@@ -3,7 +3,11 @@
 ## Installation
 
 ```
-npm install --save-dev @testing-library/react @testing-library/jest-dom
+npm install --save-dev \
+    @testing-library/dom \
+    @testing-library/jest-dom \
+    @testing-library/react \
+    @testing-library/user-event
 ```
 
 ```javascript
