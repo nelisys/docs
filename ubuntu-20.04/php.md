@@ -21,3 +21,14 @@ $ sudo apt install -y php7.4-zip \
     php7.4-gd \
     php7.4-curl
 ```
+
+## Configuration
+
+```
+; /etc/php/7.4/fpm/php.ini
+upload_max_filesize = 64M
+```
+
+```
+$ sudo systemctl restart php7.4-fpm
+```
