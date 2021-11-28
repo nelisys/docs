@@ -37,3 +37,9 @@ $ curl --header 'X-key: value'
 ```console
 $ curl --insecure https://192.168.1.1/
 ```
+
+## follow redirect
+
+```console
+$ curl -L ...
+```
