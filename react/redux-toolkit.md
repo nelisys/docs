@@ -10,7 +10,7 @@ $ cd counter/
 $ npm install react-redux @reduxjs/toolkit
 ```
 
-## create Slice
+## createSlice()
 
 Create each Slice.
 
@@ -44,7 +44,7 @@ export const counterActions = counterSlice.actions;
 export default counterSlice;
 ```
 
-## create Store
+## configureStore()
 
 Combine many Slices to single Store
 
@@ -66,7 +66,7 @@ export default store;
 
 Still wrap app with Provider the same.
 
-```
+```javascript
 // index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -85,7 +85,7 @@ ReactDOM.render(
 
 ## components
 
-```
+```javascript
 // components/Counter.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
