@@ -10,11 +10,13 @@ $ cd counter/
 $ npm install react-redux @reduxjs/toolkit
 ```
 
-## create store
+## create Slice
+
+Create each Slice.
 
 ```javascript
-// store/index.js
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+// store/counterSlice.js
+import { createSlice } from '@reduxjs/toolkit';
 
 const counterSlice = createSlice({
     name: 'counter',
@@ -38,16 +40,31 @@ const counterSlice = createSlice({
     },
 });
 
-const store = configureStore({
-    reducer: counterSlice.reducer,
-});
-
 export const counterActions = counterSlice.actions;
+export default counterSlice;
+```
+
+## create Store
+
+Combine many Slices to single Store
+
+```javascript
+// store/index.js
+import { configureStore } from '@reduxjs/toolkit';
+import counterSlice from './counterSlice';
+
+const store = configureStore({
+    reducer: {
+        counter: counterSlice.reducer,
+    }
+});
 
 export default store;
 ```
 
 ## Wrap App with Provider
+
+Still wrap app with Provider the same.
 
 ```
 // index.js
@@ -69,14 +86,15 @@ ReactDOM.render(
 ## components
 
 ```
+// components/Counter.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { counterActions } from '../store/index';
+import { counterActions } from '../store/counterSlice';
 
 function Counter() {
     const dispatch = useDispatch();
-    const counter = useSelector(state => state.counter);
-    const showCounter = useSelector(state => state.showCounter);
+    const counter = useSelector(state => state.counter.counter);
+    const showCounter = useSelector(state => state.counter.showCounter);
 
     function incrementHandler() {
         dispatch(counterActions.increment());
