@@ -3,9 +3,9 @@
 ## Installation
 
 ```
-$ npx create-next-app nextjs-blog
+$ npx create-next-app my-nextjs --use-npm
 
-$ cd nextjs-blog
+$ cd my-nextjs
 
-$ yarn dev
+$ npm run dev
 ```
