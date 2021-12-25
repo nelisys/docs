@@ -19,7 +19,8 @@ $ sudo apt install -y php7.4-zip \
     php7.4-pdo-sqlite \
     php7.4-pdo-mysql \
     php7.4-gd \
-    php7.4-curl
+    php7.4-curl \
+    php-redis
 ```
 
 ## Configuration
