@@ -13,18 +13,17 @@
 - Android
 - Red Hat
   - Red Hat Enterprise Linux 8 : Download for Development Use
-  - CentOS Linux 8
 
 - Ubuntu
   - Ubuntu Desktop
   - Ubuntu Server
-  - Version 18.04 LTS vs 19.10
+  - Version 20.04 LTS vs 21.10
 
 ## Linux Installation
 
 - Machine to Install
   - PC/Server
   - Virtual Machine
-- CentOS Linux 8 Installation
-- Ubuntu Server 18.04 Installation
+
+## Red Hat Enterprise Linux 8 Installation
 
