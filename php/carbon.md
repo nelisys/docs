@@ -64,3 +64,9 @@ Carbon::now()->addDays(-7)]
 ```php
 diffInHours();
 ```
+
+## parse
+
+```php
+Carbon::createFromTimestamp($timestamp);
+```
