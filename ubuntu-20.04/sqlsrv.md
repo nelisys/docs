@@ -16,10 +16,12 @@ $ wget 'https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.
 $ tar zxvf OpenSSL_1_1_1m.tar.gz
 ```
 
+Note: default `config` will install files in `/usr/local/lib`
+
 ```
 $ cd openssl-OpenSSL_1_1_1m/
 
-$ ./config
+$ ./config --prefix=/usr/local/openssl-1.1.1m
 
 $ make
 
@@ -29,21 +31,32 @@ $ sudo make install
 ## Installed Files
 
 ```
-$ ls -l /usr/local/lib/
--rw-r--r-- 1 root root  5780720 Jan 15 13:37 libcrypto.a
-lrwxrwxrwx 1 root root       16 Jan 15 13:37 libcrypto.so -> libcrypto.so.1.1
--rwxr-xr-x 1 root root  3394592 Jan 15 13:37 libcrypto.so.1.1
--rw-r--r-- 1 root root  1050998 Jan 15 13:37 libssl.a
-lrwxrwxrwx 1 root root       13 Jan 15 13:37 libssl.so -> libssl.so.1.1
--rwxr-xr-x 1 root root   706696 Jan 15 13:37 libssl.so.1.1
+$ ls -l /usr/local/openssl-1.1.1m/
+drwxr-xr-x 2 root root 4096 Jan 15 14:37 bin
+drwxr-xr-x 3 root root 4096 Jan 15 14:37 include
+drwxr-xr-x 4 root root 4096 Jan 15 14:37 lib
+drwxr-xr-x 4 root root 4096 Jan 15 14:38 share
+drwxr-xr-x 5 root root 4096 Jan 15 14:37 ssl
 
-$ sudo ldconfig
+$ ls -l /usr/local/openssl-1.1.1m/bin/
+-rwxr-xr-x 1 root root   6176 Jan 15 14:37 c_rehash
+-rwxr-xr-x 1 root root 873464 Jan 15 14:37 openssl
+
+$ ls -l /usr/local/openssl-1.1.1m/lib/
 ```
 
-```
-$ ls -l /usr/local/bin/openssl
--rwxr-xr-x 1 root root 873464 Jan 15 13:37 /usr/local/bin/openssl
+## Run command
 
-$ openssl version
-OpenSSL 1.1.1m  14 Dec 2021
+Note: You can add lib installed `/usr/local/openssl-1.1.1m/lib` path in `/etc/ld.so.conf`, then run `sudo ldconfig`. But I don't want to affect other programs that may use the default Ubuntu installed version.
+
+```
+$ export LD_LIBRARY_PATH=/usr/local/openssl-1.1.1m/lib
+
+$ /opt/mssql-tools/bin/sqlcmd -S <sql-2008> -U sa
+Password:
+
+1> select @@version
+1> go
+
+Microsoft SQL Server 2008 R2 (SP2) - 10.50.4042.0 (X64)
 ```
