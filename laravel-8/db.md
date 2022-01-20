@@ -26,3 +26,9 @@ try {
     die($ex->getMessage());
 }
 ```
+
+Specify another DB connection
+
+```php
+DB::connection('sqlsrv')->beginTransaction();
+```
