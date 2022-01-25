@@ -70,3 +70,7 @@ diffInHours();
 ```php
 Carbon::createFromTimestamp($timestamp);
 ```
+
+```php
+Carbon::createFromFormat('Y-m-d', '2022-01-25')->format('d/m/Y');
+```
