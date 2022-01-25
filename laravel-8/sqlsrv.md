@@ -11,3 +11,13 @@
     ],
 ],
 ```
+
+## SQL name instance
+
+```php
+// config/database.php
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => '192.168.1.1\NAMED_INSTANCE',
+            'port' => null,
+```
