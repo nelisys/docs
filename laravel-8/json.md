@@ -140,3 +140,39 @@ $students = Student::whereJsonContains('options->sports', 'Running')->pluck('nam
 //   0 => "Bob"
 // ]
 ```
+
+## Array Object casting
+
+### Get error when try update json field directly
+
+```php
+class Item extends Model
+{
+    protected $casts = [
+        'options' => 'array',
+    ];
+
+// get error
+$item->options['flag'] = true;
+```
+
+```
+   ErrorException
+
+  Indirect modification of overloaded property App\Models\Item::$options has no effect
+```
+
+### Solution
+
+```php
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+
+class Item extends Model
+{
+    protected $casts = [
+        'options' => AsArrayObject::class,
+    ];
+
+// ok now
+$item->options['flag'] = true;
+```
