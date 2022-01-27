@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 ## remember()
 
 ```php
-$items = Cache::remember('some-key, $seconds, function () {
+$items = Cache::remember('some-key', $seconds, function () {
     $data = ...
 
     return $data;
