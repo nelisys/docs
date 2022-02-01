@@ -68,3 +68,24 @@ print_r(array_filter($students, function($student) {
 //
 // )
 ```
+
+## spread operator (three dots)
+
+requires `php 7.4`
+
+```php
+$students = ['Alice', 'Bob'];
+
+$students = [
+    ...$students,
+    'Chris',
+];
+
+print_r($students);
+// Array
+// (
+//     [0] => Alice
+//     [1] => Bob
+//     [2] => Chris
+// )
+```
