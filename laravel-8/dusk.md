@@ -159,3 +159,25 @@ $browser->assertInputValue($field, $value);
 
 $browser->assertSeeIn($selector, $value);
 ```
+
+## Disable Browser Validation
+
+```php
+// tests/DuskTestCase.php
+// ...
+use Laravel\Dusk\Browser;
+
+abstract class DuskTestCase extends BaseTestCase
+    // ...
+    public static function prepare()
+    {
+        if (! static::runningInSail()) {
+            static::startChromeDriver();
+
+            Browser::macro('disableClientSideValidation', function () {
+                $this->script('for(let f=document.forms,i=f.length;i--;)f[i].setAttribute("novalidate",i)');
+                return $this;
+            });
+        }
+    }
+```
