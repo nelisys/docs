@@ -1,3 +1,7 @@
 # Laravel 8
 
-- [Sanctum](sanctum.md)
+## Install specific version
+
+```
+composer create-project laravel/laravel="8.*" blog
+```
