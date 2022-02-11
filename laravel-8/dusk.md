@@ -181,3 +181,39 @@ abstract class DuskTestCase extends BaseTestCase
         }
     }
 ```
+
+## Error : Mockery_1_Illuminate_Console_OutputStyle
+
+```
+$ php artisan -V
+Laravel Framework 8.83.0
+```
+
+If set `APP_ENV` to `production` and `use DatabaseMigrations` in Dusk test file.
+
+`.env`
+
+```
+APP_ENV=production
+```
+
+```php
+// tests/Browser/ExampleTest.php
+class ExampleTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+
+```
+
+When run test, you may get error `BadMethodCallException: Mockery_1_Illuminate_Console_OutputStyle`
+
+```
+$ php artisan dusk
+
+There was 1 error:
+
+1) Tests\Browser\ExampleTest::testBasicExample
+Mockery\Exception\BadMethodCallException: Received Mockery_1_Illuminate_Console_OutputStyle::askQuestion(), but no expectations were specified
+
+...
+```
