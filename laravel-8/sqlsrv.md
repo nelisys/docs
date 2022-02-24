@@ -14,6 +14,8 @@
 
 ## SQL name instance
 
+Note: `port` must be `null`
+
 ```php
 // config/database.php
         'sqlsrv' => [
