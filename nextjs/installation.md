@@ -1,6 +1,6 @@
-# Next.js
+# Installation
 
-## Installation
+## npx
 
 ```
 $ npx create-next-app my-nextjs --use-npm
