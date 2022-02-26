@@ -271,13 +271,13 @@ $ sudo systemctl start openvpn@my-server
 ```console
 $ cd EasyRSA-CA/
 
-$ ./easyrsa gen-req my-server nopass
+$ ./easyrsa gen-req client1 nopass
 ...
-Common Name (eg: your user, host, or server name) [my-server]:
+Common Name (eg: your user, host, or server name) [client1]:
 
 Keypair and certificate request completed. Your files are:
-req: /home/supasin/EasyRSA-Server/pki/reqs/my-server.req
-key: /home/supasin/EasyRSA-Server/pki/private/my-server.key
+req: /home/supasin/EasyRSA-Server/pki/reqs/client1.req
+key: /home/supasin/EasyRSA-Server/pki/private/client1.key
 ```
 
 ## References
