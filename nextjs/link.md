@@ -1,6 +1,6 @@
 # next/link
 
-## link href
+## Link href
 
 ```javascript
 import Link from 'next/link';

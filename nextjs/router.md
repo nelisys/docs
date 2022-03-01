@@ -1,25 +1,31 @@
 # next/router
 
-## router.query
+## import
+
+```javascript
+import { useRouter } from 'next/router';
+
+const router = useRouter();
+```
+
+## Get [id]
 
 ```javascript
 // /pages/products/[id].js
-import { useRouter } from 'next/router';
 
 // http://example.com/products/5
-const router = useRouter();
 router.query.id;     // 5
 ```
 
-## router.push
+## Navigate
 
-```
+```javascript
 router.push('/products/7');
 ```
 
 or
 
-```
+```javascript
 router.push({
     pathname: '/products/[id]',
     query: {

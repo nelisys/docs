@@ -2,11 +2,12 @@
 
 ## Static Generation
 
+- data not changed often
+
 ```javascript
 export async function getStaticProps(context) {
     // /items/[id].js
-    const { params } = context;
-    const id = params.id;
+    const id = context.params.id;
 
     const data = [1, 2, 3];
 
@@ -22,6 +23,7 @@ export async function getStaticProps(context) {
     };
 }
 
+// requires for dynamic path, ex: include [id]
 export async function getStaticPaths(context) {
     return {
         paths: [
@@ -35,9 +37,11 @@ export async function getStaticPaths(context) {
 
 ## Server Side Generation
 
+- data changed every request
+
 ```javascript
 export async function getServerSideProps(context) {
-    const { params } = context;
+    const { req, params } = context;
 
     const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${params.id}`)
     const data = await response.json();
