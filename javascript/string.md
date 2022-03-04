@@ -9,6 +9,12 @@ a.replace('hello ', '');
 // world
 ```
 
+with regular expression
+
+```javascript
+'hello'.replace(/lo$/, '');
+```
+
 ## upper case
 
 ```javascript
