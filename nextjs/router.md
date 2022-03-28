@@ -33,3 +33,27 @@ router.push({
     }
 });
 ```
+
+## Get Query Parameters
+
+Ex: http://localhost:3000/?q=alice
+
+```js
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+function HomePage() {
+    const router = useRouter();
+
+    useEffect(() => {
+        if (router.isReady) {
+            console.log(router.query);
+            // {q: 'alice'}
+        }
+    }, [router]);
+
+    return (
+        <>...</>
+    );
+}
+```

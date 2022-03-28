@@ -1,6 +1,8 @@
 # react-router-dom
 
-## index.js
+## Get Query Parameters
+
+### index.js
 
 ```js
 // index.js
@@ -17,7 +19,7 @@ ReactDOM.render(
 );
 ```
 
-## App.js
+### App.js
 
 Test with `http://localhost:3000/?q=alice`
 
