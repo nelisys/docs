@@ -19,29 +19,32 @@ ReactDOM.render(
 
 ## App.js
 
+Test with `http://localhost:3000/?q=alice`
+
 ```js
 // App.js
 import { useLocation } from 'react-router-dom';
 
 function App() {
-    const search = new URLSearchParams(useLocation().search);
-    const q = search.get('q');
+    console.log(useLocation());
+    // {pathname: '/', search: '?q=alice', hash: '', state: null, key: 'default'}
 
-    console.log('q =', q);
+    console.log(useLocation().search);
+    // ?q=alice
+
+    console.log(new URLSearchParams(useLocation().search));
+    // URLSearchParams {}
+
+    const search = new URLSearchParams(useLocation().search);
+    console.log(search.get('q'));
+    // alice
 
     return (
         <>
-            q = { q }
+            ...
         </>
     );
 }
 
 export default App;
-```
-
-## Output
-
-```
-http://localhost:3000/?q=alice
-// q = alice
 ```
