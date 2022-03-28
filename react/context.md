@@ -10,7 +10,7 @@ const AppContext = createContext({
     user: {},
 });
 
-export const AppContextProvider = (props) => {
+export function AppContextProvider(props) {
     const [user, setUser] = useState({id: 1, name: 'Alice'});
     const ctxValue = {
         user: user

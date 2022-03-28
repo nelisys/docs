@@ -11,10 +11,15 @@ $ npm install --save bootstrap
 Edit `pages/_app.js`
 
 ```js
+import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+    useEffect(() => {
+        import('bootstrap/dist/js/bootstrap.bundle');
+    }, []);
+
+    return <Component {...pageProps} />
 }
 
 export default MyApp
