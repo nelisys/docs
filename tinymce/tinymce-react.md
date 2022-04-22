@@ -24,13 +24,13 @@ export default function App() {
     return (
         <>
             <Editor
-                apiKey="h7b7hthfi5d4gd9gxow83qwry0aa34ag45yhko2fvx3qzqjb"
+                apiKey="h7b7..."
                 onInit={(evt, editor) => editorRef.current = editor}
                 initialValue="<p>This is the initial content of the editor.</p>"
                 init={{
                     menubar: false,
                     plugins: [
-                        'lists image link media table preview help',
+                        'lists', 'image', 'link', 'media', 'table', 'preview', 'help',
                     ],
                     toolbar: 'formatselect | bold italic forecolor backcolor ' +
                         'bullist numlist image link media table | outdent indent ' +

@@ -1,5 +1,7 @@
 # request
 
+## validation
+
 ```php
 public function store(BlogRequest $request)
 {
@@ -8,4 +10,10 @@ public function store(BlogRequest $request)
 
     // return array of only rules defined in BlogRequest->rules()
     $request->validated();
+```
+
+## ip address
+
+```php
+request()->ip();
 ```
