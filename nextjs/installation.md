@@ -3,7 +3,7 @@
 ## npx
 
 ```
-$ npx create-next-app my-nextjs --use-npm
+$ npx create-next-app --use-npm my-nextjs
 
 $ cd my-nextjs
 
