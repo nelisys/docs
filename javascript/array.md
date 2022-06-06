@@ -10,6 +10,13 @@ let a = Array(3);
 a.fill(1);
 // [ 1, 1, 1 ]
 
+## range
+
+```
+[...Array(5).keys()];
+// [0, 1, 2, 3, 4]
+```
+
 ## map
 
 ```javascript
