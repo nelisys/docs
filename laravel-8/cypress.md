@@ -4,9 +4,13 @@
 
 ```
 npm install -D cypress
+
+composer require laracasts/cypress --dev
+
+php artisan cypress:boilerplate
 ```
 
-## Open
+## Run
 
 ```
 npx cypress open
