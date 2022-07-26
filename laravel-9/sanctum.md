@@ -26,6 +26,14 @@ return [
     'supports_credentials' => true,
 ```
 
+Edit `.env`
+
+```
+# .env
+SANCTUM_STATEFUL_DOMAINS=web.my-app.test
+#SESSION_DOMAIN=.my-app.test
+```
+
 Add route in `api.php`
 
 ```php
@@ -73,14 +81,6 @@ class LoginController extends Controller
 }
 ```
 
-Edit `.env`
-
-```
-# .env
-SANCTUM_STATEFUL_DOMAINS=web.my-app.test
-SESSION_DOMAIN=.my-app.test
-```
-
 Creat test user
 
 ```
@@ -99,7 +99,7 @@ npm install axios
 ```js
 // src/App.js
 import { useEffect, useState } from 'react';
-import axios from "axios";
+import axios from 'axios';
 
 const http = axios.create({
     baseURL: 'http://api.my-app.test',

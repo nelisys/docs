@@ -120,3 +120,13 @@ Example, only active users allowed to login
             }
         });
 ```
+
+## ignoreRoutes()
+
+```php
+// app/Providers/FortifyServiceProvider.php
+    public function register()
+    {
+        Fortify::ignoreRoutes();
+    }
+```
