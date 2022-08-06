@@ -130,3 +130,25 @@ Example, only active users allowed to login
         Fortify::ignoreRoutes();
     }
 ```
+
+## Change url to /api/login
+
+```php
+// routes/api.php
+Route::post('login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware('throttle:login');
+```
+
+```php
+// app/Providers/FortifyServiceProvider.php
+    public function boot()
+    {
+        // ...
+        Fortify::authenticateThrough(function (Request $request) {
+            return array_filter([
+                    config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
+                    AttemptToAuthenticate::class,
+            ]);
+        });
+    }
+```
