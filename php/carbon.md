@@ -74,3 +74,12 @@ Carbon::createFromTimestamp($timestamp);
 ```php
 Carbon::createFromFormat('Y-m-d', '2022-01-25')->format('d/m/Y');
 ```
+
+## Locale
+
+```php
+$date = CarbonImmutable::now()->locale('th_TH');
+
+echo $date->dayName;    // จันทร์
+echo $date->monthName;  // สิงหาคม
+```
