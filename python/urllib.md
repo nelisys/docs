@@ -48,3 +48,24 @@ query = parse.parse_qs(parse.urlsplit(url).query)
 print(query['id'])
 # ['123']
 ```
+
+## post
+
+```python
+def api_post(url, data):
+    data_json = json.dumps(data)
+    data_json_bytes = data_json.encode('utf-8')
+
+    try:
+        req = Request(url)
+        req.add_header('Content-Type', 'application/json')
+        res = urlopen(req, data_json_bytes)
+
+        print(res.code)
+        print(res.read())
+    except HTTPError as ex:
+        print(ex.code)
+        print(ex)
+    except Exception as ex:
+        print(ex)
+```
