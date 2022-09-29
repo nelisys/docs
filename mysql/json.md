@@ -55,3 +55,55 @@ select json_pretty(data) from tests where id = 2;
 } |
 +----------------------------------------------------+
 ```
+
+## Functions
+
+### JSON_EXTRACT()
+
+```
+SELECT id,
+       JSON_EXTRACT(options, '$.name'),
+       options->'$.name',
+       options->>'$.name'
+  FROM tests
+```
+
+### JSON_INSERT()
+
+inserts values without replacing existing values.
+
+```
+UPDATE tests
+   SET options = JSON_INSERT(options, '$.name', 'Alice')
+ WHERE id = 1;
+```
+
+### JSON_REPLACE()
+
+replaces only existing values.
+
+```
+UPDATE tests
+   SET options = JSON_REPLACE(options, '$.name', 'Bob')
+ WHERE id = 1;
+```
+
+### JSON_SET()
+
+replaces existing values and adds nonexisting values.
+
+```
+UPDATE tests
+   SET options = JSON_SET(options, '$.name', 'Chris')
+ WHERE id = 1;
+```
+
+### JSON_REMOVE()
+
+removes data from a JSON documen
+
+```
+UPDATE tests
+   SET options = JSON_REMOVE(options, '$.name')
+ WHERE id = 1;
+```
