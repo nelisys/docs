@@ -107,3 +107,25 @@ MAIL_USERNAME=alice@gmail.com
 MAIL_PASSWORD=app-password
 MAIL_ENCRYPTION=tls
 ```
+
+### Error
+
+```
+stream_socket_enable_crypto(): Peer certificate CN=`*.mailgun.org' did not match expected 
+```
+
+```php
+// config/mail.php
+    'mailers' => [
+        'smtp' => [
+            'transport' => 'smtp',
+            ...
+            'auth_mode' => null,
+            'stream' => [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true,
+                ],
+            ],
+```
