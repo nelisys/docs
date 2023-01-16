@@ -12,14 +12,3 @@ $ npx create-remix@latest my-remix
 ```
 $ npm run dev
 ```
-
-## Modules
-
-### Link
-
-```jsx
-import { Link } from '@remix-run/react';
-
-<Link to="/contact">contact</Link>
-```
-

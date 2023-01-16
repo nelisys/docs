@@ -1,11 +1,11 @@
 # useTransition
 
 ```jsx
-import { useTransition as useNavigation } from '@remix-run/react';
+import { useTransition } from '@remix-run/react';
 
-const navigation = useNavigation();
+const transition = useNavigation();
 
-navigation.state
+transition.state
 // - 'submitting';
 // - 'idle'
 ```
