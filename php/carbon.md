@@ -84,3 +84,16 @@ $date = CarbonImmutable::now()->locale('th_TH');
 echo $date->dayName;    // จันทร์
 echo $date->monthName;  // สิงหาคม
 ```
+
+## diffInDaysFiltered()
+
+```php
+$days = $date_end->diffInDaysFiltered(function(Carbon $date) {
+    return isWorkingDate($date);
+}, $date_start);
+
+function isWorkingDate($date)
+{
+    return true;
+}
+```
