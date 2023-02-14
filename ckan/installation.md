@@ -65,7 +65,9 @@ sudo service tomcat9 restart
 ```
 ckan.site_id = default
 ckan.site_url = http://demo.ckan.org
-sqlalchemy.url = postgresql://ckan_default:ckan.1234@localhost/ckan_default
+sqlalchemy.url = postgresql://ckan_default:secret@localhost/ckan_default
+
+ckan.storage_path = /var/lib/ckan
 ```
 
 ```

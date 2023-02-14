@@ -39,3 +39,9 @@ _.get(students, '0.address.country');
 _.get(students, '0.unknown', 'default');
 // default
 ```
+
+## ucwords
+
+```
+_.startCase(_.toLower(text));
+```
