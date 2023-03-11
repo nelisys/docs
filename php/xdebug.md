@@ -10,3 +10,8 @@ Package    Version State
 ...
 xdebug     2.9.0   stable
 ```
+
+```
+; php.ini
+xdebug.mode=coverage
+```
