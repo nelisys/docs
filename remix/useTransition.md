@@ -1,9 +1,23 @@
 # useTransition
 
 ```jsx
-import { useTransition } from '@remix-run/react';
+import { useTransition as useNavigation } from '@remix-run/react';
 
-const transition = useNavigation();
+function ItemForm() {
+    const transition = useNavigation();
+    const isSubmitting = navigation.state === 'submitting';
+
+    return (
+        <Form>
+            <button
+                type="submit"
+                disabled={isSubmitting}
+            >
+                submit
+            </button>
+        </Form>
+    );
+}
 
 transition.state
 // - 'submitting';

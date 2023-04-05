@@ -1,10 +1,12 @@
-# root.jsx
+# Error in root.jsx
 
 ## CatchBoundary
 
 - handle 404
 
 ```jsx
+import { useCatch } from '@remix-run/react';
+
 export function CatchBoundary() {
     const caughtResponse = useCatch();
 
@@ -19,6 +21,12 @@ export function CatchBoundary() {
 
 ```jsx
 export function ErrorBoundary({error}) {
-    error.message;
+    return (
+        <html>
+            <body>
+                {error.message}
+            </body>
+        </html>
+    );
 }
 ```
