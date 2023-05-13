@@ -49,3 +49,54 @@ cp -a vendor/laravel/breeze/stubs/api/pest-tests/Feature/Auth/AuthenticationTest
     tests/Feature/Auth/AuthenticationTest.php
 ```
 
+```php
+// tests/Feature/Auth/AuthenticationTest.php
+use App\Models\User;
+
+test('invalid user or password can not login', function () {
+    $user = User::factory()->create();
+
+    $login_data = [
+        'email' => $user->email,
+        'password' => 'invalid password',
+    ];
+
+    $this->postJson('/login', $login_data)
+        ->assertStatus(422)
+        ->assertJson([
+            'message' => __('auth.failed'),
+            'errors' => [
+                'email' => [
+                    __('auth.failed')
+                ],
+            ],
+        ]);
+
+    $this->assertGuest();
+});
+
+test('valid user and password can login', function () {
+    $user = User::factory()->create();
+
+    $login_data = [
+        'email' => $user->email,
+        'password' => 'password',
+    ];
+
+    $this->postJson('/login', $login_data)
+        ->assertStatus(204);
+
+    $this->assertAuthenticated();
+});
+
+test('user can logout', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user);
+
+    $this->postJson('/logout')
+        ->assertStatus(204);
+
+    $this->assertGuest();
+});
+```
