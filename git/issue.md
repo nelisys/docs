@@ -32,6 +32,8 @@ git branch
 git fetch
 
 git checkout main
+
+git pull
 ```
 
 ```sh
