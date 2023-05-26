@@ -3,7 +3,7 @@
 ## installation
 
 ```sh
-composer require laravel/breeze
+composer require laravel/breeze --dev
 ```
 
 ```sh
