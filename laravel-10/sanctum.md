@@ -6,6 +6,8 @@
 
 ```
 curl -c cookies.txt \
+    -H 'Origin: http://web.example.test' \
+    -H "X-Requested-With: XMLHttpRequest" \
     http://api.example.test/sanctum/csrf-cookie
 ```
 
@@ -15,6 +17,7 @@ curl -c cookies.txt \
 XSRF_TOKEN=`cat cookies.txt | grep XSRF-TOKEN | sed 's/.*XSRF-TOKEN\t//;s/\%3D/=/'`
 
 curl -b cookies.txt -c cookies.txt \
+    -H 'Origin: http://web.example.test' \
     -H "X-Requested-With: XMLHttpRequest" \
     -H "X-XSRF-TOKEN: $XSRF_TOKEN" \
     -X POST \
@@ -28,9 +31,9 @@ curl -b cookies.txt -c cookies.txt \
 XSRF_TOKEN=`cat cookies.txt | grep XSRF-TOKEN | sed 's/.*XSRF-TOKEN\t//;s/\%3D/=/'`
 
 curl -b cookies.txt \
+    -H 'Origin: http://web.example.test' \
     -H "X-Requested-With: XMLHttpRequest" \
     -H "X-XSRF-TOKEN: $XSRF_TOKEN" \
-    -H 'Origin: http://web.example.test' \
     http://api.example.test/api/user
 ```
 
@@ -38,6 +41,7 @@ curl -b cookies.txt \
 
 ```
 curl -b cookies.txt \
+    -H 'Origin: http://web.example.test' \
     -H "X-Requested-With: XMLHttpRequest" \
     -H "X-XSRF-TOKEN: $XSRF_TOKEN" \
     -X POST \
@@ -72,8 +76,8 @@ $login = Http::withOptions([
         'cookies' => $cookieJar,
     ])
     ->withHeaders([
+        'Origin' => 'http://web.example.test',
         'X-XSRF-TOKEN' => $xsrf_token,
-        // 'Origin' => 'http://web.example.test',
     ])
     ->post("http://api.example.test/api/login", $loginData);
 
@@ -82,8 +86,8 @@ $user = Http::withOptions([
         'cookies' => $cookieJar,
     ])
     ->withHeaders([
-        'X-XSRF-TOKEN' => $xsrf_token,
         'Origin' => 'http://web.example.test',
+        'X-XSRF-TOKEN' => $xsrf_token,
     ])
     ->get("http://api.example.test/api/user");
 ```
