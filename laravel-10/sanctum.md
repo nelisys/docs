@@ -4,34 +4,34 @@
 
 ### csrf-cookie
 
-```
+```sh
 curl -c cookies.txt \
-    -H 'Origin: http://web.example.test' \
+    -H "Origin: http://web.example.test" \
     -H "X-Requested-With: XMLHttpRequest" \
     http://api.example.test/sanctum/csrf-cookie
 ```
 
 ### login
 
-```
-XSRF_TOKEN=`cat cookies.txt | grep XSRF-TOKEN | sed 's/.*XSRF-TOKEN\t//;s/\%3D/=/'`
+```sh
+XSRF_TOKEN=`cat cookies.txt | grep XSRF-TOKEN | cut -d$'\t' -f 7 | sed 's/\%3D/=/'`
 
 curl -b cookies.txt -c cookies.txt \
-    -H 'Origin: http://web.example.test' \
+    -H "Origin: http://web.example.test" \
     -H "X-Requested-With: XMLHttpRequest" \
     -H "X-XSRF-TOKEN: $XSRF_TOKEN" \
     -X POST \
-    -d 'email=alice@example.test&password=secret' \
+    -d "email=alice@example.test&password=secret" \
     http://api.example.test/api/login
 ```
 
 ### /api/user
 
-```
-XSRF_TOKEN=`cat cookies.txt | grep XSRF-TOKEN | sed 's/.*XSRF-TOKEN\t//;s/\%3D/=/'`
+```sh
+XSRF_TOKEN=`cat cookies.txt | grep XSRF-TOKEN | cut -d$'\t' -f 7 | sed 's/\%3D/=/'`
 
 curl -b cookies.txt \
-    -H 'Origin: http://web.example.test' \
+    -H "Origin: http://web.example.test" \
     -H "X-Requested-With: XMLHttpRequest" \
     -H "X-XSRF-TOKEN: $XSRF_TOKEN" \
     http://api.example.test/api/user
@@ -39,9 +39,9 @@ curl -b cookies.txt \
 
 ### logout
 
-```
+```sh
 curl -b cookies.txt \
-    -H 'Origin: http://web.example.test' \
+    -H "Origin: http://web.example.test" \
     -H "X-Requested-With: XMLHttpRequest" \
     -H "X-XSRF-TOKEN: $XSRF_TOKEN" \
     -X POST \
