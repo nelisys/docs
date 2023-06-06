@@ -17,3 +17,7 @@
 - getBy : throw exception if not found
 - queryBy
 - findBy : async
+
+```js
+screen.logTestingPlaygroundURL();
+```
