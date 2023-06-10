@@ -1,6 +1,5 @@
-# Remix
+# Installation
 
-## Installation
 ```
 $ npx create-remix@latest my-remix
 
