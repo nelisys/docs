@@ -74,15 +74,13 @@ export async function loader({request}) {
 
 export async function action({request}) {
     if (request.method == 'POST') {
-        return actionLogin({request})
+        return loginAction({request})
     }
 
-    return actionLogout({request});
+    return logoutAction({request});
 }
 
-async function actionLogin({request}) {
-    console.log('*** actionLogin ***');
-
+async function loginAction({request}) {
     try {
         // GET /sanctum/csrf-cookie
         const csrfResponse = await http.get('/sanctum/csrf-cookie');
@@ -119,7 +117,7 @@ async function actionLogin({request}) {
     return null;
 }
 
-async function actionLogout({request}) {
+async function logoutAction({request}) {
     // POST /api/logout
     http.interceptors.request.use(async (config) => {
         const requestCookies = getCookiesFromRequest(request);
