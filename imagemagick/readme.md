@@ -1,5 +1,13 @@
 # ImageMagick
 
+## Installation : Ubuntu 22.04
+
+```
+sudo apt install imagemagick
+```
+
+## Usages
+
 ```
 convert -size 800x400 \
     -background '#88aaff' \
