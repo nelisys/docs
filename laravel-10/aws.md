@@ -11,7 +11,7 @@
 ## Composer Installation
 
 ```sh
-composer require league/flysystem-aws-s3-v3 "^3.0" --with-all-dependencies
+composer require league/flysystem-aws-s3-v3 "^3" --with-all-dependencies
 ```
 
 ## S3 .env Configuration

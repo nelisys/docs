@@ -6,6 +6,8 @@
 npm install --save-dev react react-dom @vitejs/plugin-react
 
 npm install --save-dev react-router-dom
+
+npm install --save-dev sass
 ```
 
 ## vite.config.js
