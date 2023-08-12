@@ -28,6 +28,7 @@ $ sudo apt install -y php8.1-zip \
 ```
 ; /etc/php/8.1/fpm/php.ini
 upload_max_filesize = 64M
+post_max_size = 64M
 ```
 
 ```
