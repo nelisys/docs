@@ -30,6 +30,14 @@ $sheets = $spreadsheet->getSheetNames();
 // Sheet2
 ```
 
+```php
+$sheets = $spreadsheet->getAllSheets();
+
+foreach ($sheets as $sheet) {
+    $title = $sheet->getTitle();
+}
+```
+
 ## get the sheet
 
 ```php

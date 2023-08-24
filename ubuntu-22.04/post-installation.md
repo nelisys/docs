@@ -4,22 +4,46 @@
 
 ## timedatectl
 
-## logrotate
+```
+sudo timedatectl set-timezone Asia/Bangkok
+```
 
-## bashrc
+## hostnamectl
 
-## visudo
+```
+sudo hostnamectl set-hostname my-host
+```
 
 ## update-alternatives
 
 ```
-$ update-alternatives --config editor
+sudo update-alternatives --config editor
+```
+
+## visudo
+
+## bashrc
+
+```
+sudo vi /etc/bash.bashrc
 ```
 
 ## vimrc
 
+```
+sudo vi /etc/vim/vimrc
+```
+
+## logrotate
+
+```
+sudo vi /etc/logrotate.conf
+
+sudo vi /etc/logrotate.d/rsyslog
+```
+
 ## install more packages
 
 ```
-apt install unzip
+sudo apt install unzip
 ```
