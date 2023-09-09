@@ -18,8 +18,10 @@ $writer->save('file.xlsx');
 ## open the file
 
 ```php
-$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
-$spreadsheet = $reader->load('data/test.xls');
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+
+$reader = new Xlsx();
+$spreadsheet = $reader->load('data/test.xlsx');
 ```
 
 ## list sheets
