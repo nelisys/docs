@@ -1,0 +1,4 @@
+# footer.php
+
+```php
+```

@@ -1,0 +1,4 @@
+# single.php
+
+```php
+```
