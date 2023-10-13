@@ -9,6 +9,11 @@ JSON.stringify(a);
 // ["a","b","c"]
 ```
 
+```js
+// add indent with 2 spaces
+JSON.stringify(a, null, 2);
+```
+
 ## parse
 
 ```javascript
