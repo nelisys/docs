@@ -45,3 +45,16 @@ function Component() {
         </>
     );
 ```
+
+## React Query Devltools
+
+```
+npm i -D @tanstack/react-query-devtools
+```
+
+```jsx
+<QueryClientProvider client={queryClient}>
+    {/* The rest of your application */}
+    <ReactQueryDevtools initialIsOpen={false} />
+</QueryClientProvider>
+```
