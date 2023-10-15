@@ -103,11 +103,26 @@ $sheet->getStyle('A1')
 ```php
 // PhpOffice\PhpSpreadsheet\Worksheet\Drawing
 $logo = new Drawing();
+$logo->setWorksheet($sheet);
+$logo->setCoordinates('B15');
+
 $logo->setName('Logo');
 $logo->setDescription('Logo');
 $logo->setPath('/path/to/logo.png');
 $logo->setOffsetX(5);
 $logo->setOffsetY(5);
 $logo->setHeight(50);
-$logo->setWorksheet($sheet);
+```
+
+## output to browesr
+
+```php
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="myfile.xlsx"');
+header('Cache-Control: max-age=0');
+
+$writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+$writer->save('php://output');
 ```
