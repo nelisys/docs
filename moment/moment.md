@@ -44,3 +44,8 @@ moment().subtract(1, 'day');
 moment().add(1, 'day');
 ```
 
+## diffForHumans
+
+```js
+moment().fromNow();
+```

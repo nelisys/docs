@@ -66,7 +66,7 @@ const routes = [
                 element: <div>Home</div>,
             },
             {
-                path: 'Contact',
+                path: 'contact',
                 element: <div>Contact</div>,
             },
         ],
