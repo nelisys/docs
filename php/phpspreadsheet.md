@@ -126,3 +126,18 @@ header('Cache-Control: max-age=0');
 $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
 ```
+
+## drawing
+
+```php
+$drawings = $sheet->getDrawingCollection();
+
+foreach ($drawings as $drawing) {
+    echo $drawing->getName() . ' ';
+    echo $drawing->getPath() . ' ';
+    echo $drawing->getCoordinates() . ' ';  // ex: B2
+
+    $extension = pathinfo($drawing->getPath(), PATHINFO_EXTENSION);
+    $contents = file_get_contents($drawing->getPath());
+}
+```

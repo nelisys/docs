@@ -1,5 +1,13 @@
 # tk
 
+## installation
+
+```
+pip3 install tk
+```
+
+## sample code
+
 ```python
 import tkinter as tk
 import sys
