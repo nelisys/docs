@@ -52,3 +52,11 @@ mysql> START REPLICA USER='repl' password='repl1234';
 ```
 mysql> SHOW REPLICA STATUS;
 ```
+
+## Stop
+
+```
+mysql> STOP REPLICA;
+
+mysql> RESET REPLICA;
+```
