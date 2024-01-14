@@ -16,8 +16,8 @@ $ systemctl status php8.1-fpm
 $ sudo apt install -y php8.1-zip \
     php8.1-mbstring \
     php8.1-xml \
-    php8.1-pdo-sqlite \
-    php8.1-pdo-mysql \
+    php8.1-sqlite3 \
+    php8.1-mysql \
     php8.1-gd \
     php8.1-curl \
     php-redis
