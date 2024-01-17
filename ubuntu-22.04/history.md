@@ -1,0 +1,5 @@
+# history
+
+```
+unset HISTFILE
+```
