@@ -59,6 +59,7 @@ def api_post(url, data):
     try:
         req = Request(url)
         req.add_header('Content-Type', 'application/json')
+        req.add_header('X-Requested-With', 'XMLHttpRequest')
         res = urlopen(req, data_json_bytes)
 
         print(res.code)
