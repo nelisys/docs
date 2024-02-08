@@ -1,8 +1,17 @@
-# Install Chart.js in Laravel
+# Chart.js in Laravel
+
+## Installation
 
 ```
-$ npm install --save-dev chart.js
+$ npm install -D chart.js
 ```
+
+Installed files
+
+- public/js/chart.js
+- public/js/chart.js.map
+
+## React
 
 edit `resources/js/bootstrap.js`
 
