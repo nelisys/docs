@@ -25,3 +25,6 @@ pi@raspberrypi:~ $ sudo apt -y upgrade
 pi@raspberrypi:~ $ sudo timedatectl set-timezone Asia/Bangkok
 ```
 
+```
+sudo apt install vim
+```
