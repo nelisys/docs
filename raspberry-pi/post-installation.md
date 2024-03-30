@@ -28,3 +28,9 @@ pi@raspberrypi:~ $ sudo timedatectl set-timezone Asia/Bangkok
 ```
 sudo apt install vim
 ```
+
+## raspi-config
+
+```
+sudo raspi-config nonint do_configure_keyboard us
+```
