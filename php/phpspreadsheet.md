@@ -98,6 +98,42 @@ $sheet->getStyle('A1')
     ->setFormatCode(NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 ```
 
+## Width/Height
+
+```php
+// width
+$sheet->getColumnDimension('C')
+    ->setWidth(20);
+
+// height
+$sheet->getRowDimension($row)
+    ->setRowHeight(20);
+```
+
+## Font
+
+```php
+$sheet->getStyle("A2:K2")
+    ->getFont()
+    ->setName('Times')
+    ->setSize(14)
+    ->setBold(true);
+```
+
+## Color
+
+```php
+$sheet->getStyle("J{$row}")
+    ->getFont()
+    ->setColor(new Color(Color::COLOR_RED));
+
+$sheet->getStyle("J{$row}")
+    ->getFill()
+    ->setFillType(Fill::FILL_SOLID)
+    ->getStartColor()
+    ->setRGB('FFEEEE');
+```
+
 ## Add image file
 
 ```php
