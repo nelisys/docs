@@ -3,7 +3,7 @@
 ## Install
 
 ```
-$ npm install --save-dev react-bootstrap bootstrap
+$ npm install -D react-bootstrap bootstrap
 ```
 
 ## vite.config.js
@@ -11,6 +11,8 @@ $ npm install --save-dev react-bootstrap bootstrap
 add `app.scss`
 
 ```js
+...
+import path from 'path';
 ...
 
 export default defineConfig({
@@ -23,6 +25,11 @@ export default defineConfig({
         }),
         react(),
     ],
+    resolve: {
+        alias: {
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+        },
+    },
 });
 
 ```
@@ -45,10 +52,5 @@ add `app.scss`
 ## app.scss
 
 ```scss
-// $theme-colors: (
-//     'primary': tomato,
-//     'danger': teal
-// );
-
-@import 'bootstrap';
+@import "~bootstrap/scss/bootstrap";
 ```
