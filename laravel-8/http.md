@@ -28,6 +28,7 @@ Http::post('http://example.com', $data);
 ```php
 $headers = [
     'Content-Type' => 'application/json',
+    'X-Requested-With' => 'XMLHttpRequest',
 ];
 
 $options = [
@@ -40,4 +41,11 @@ $options = [
 $response = Http::withOptions($options)
     ->withHeaders($headers)
     ->get('http://example.com');
+```
+
+## Ignore SSL Certificate Error
+
+
+```
+Http::withoutVerifying();
 ```

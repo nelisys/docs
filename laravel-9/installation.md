@@ -3,5 +3,5 @@
 ## composer
 
 ```
-composer create-project laravel/laravel l9
+$ composer create-project laravel/laravel:^9 my-app
 ```
