@@ -22,6 +22,7 @@ moment().format('YYYY-MM-DD HH:mm:ss');
 | HH:mm:ss   | 23:47      |
 | D MMM YYYY | 7 Aug 2019 |
 | ddd        | Sun        |
+| d          | 0=Sun, 1=Mon, 6=Sat |
 
 ## convert
 
