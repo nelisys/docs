@@ -16,3 +16,13 @@ Example
     <div>Item 3</div>
 </div>
 ```
+
+## flex
+
+```css
+flex: '0 0 200px';
+```
+
+- `0` (flex-grow): The item will not grow relative to the other flex items in the container.
+- `0` (flex-shrink): The item will not shrink relative to the other flex items in the container.
+- `200px` (flex-basis): The initial size of the item before any growing or shrinking is applied.

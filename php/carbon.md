@@ -40,6 +40,7 @@ echo $today->endOfMonth()->format('Y-m-d') . "\n";
 | j M Y  | 7 Aug 2019 |
 | H:i:s  | 14:33:52   |
 | D      | Mon        |
+| j/n/Y  | 7/8/2019   |
 
 ```php
 diffForHumans();
