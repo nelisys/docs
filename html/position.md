@@ -19,5 +19,6 @@
 - specify position by `top`, `right`, `bottom`, `left`
 
 `position: sticky`
-- have two child elements
-
+- hybrid between `relative` and `fixed`
+- in normal flow, behaves as `relative`—scrolling
+- once reaches a scroll threshold, it **sticks** like `fixed` positioning
