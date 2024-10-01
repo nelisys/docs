@@ -82,6 +82,19 @@ students.includes('Dan');
 // false
 ```
 
+### findIndex()
+
+```javascript
+const students = [
+    { name: 'Alice' },
+    { name: 'Bob' },
+    { name: 'Chris' },
+];
+
+console.log(students.findIndex(student => student.name =='Chris'));
+// 2
+```
+
 ## sort array
 
 ```javascript
