@@ -65,6 +65,8 @@ $sheet->getHighestRow();
 
 ```php
 $sheet->getCell('A1')->getValue();
+
+$sheet->getCell('A1')->getFormattedValue();
 ```
 
 ## Page Setup

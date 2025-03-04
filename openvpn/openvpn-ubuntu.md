@@ -55,6 +55,9 @@ set_var EASYRSA_REQ_CITY    "Phayathai"
 set_var EASYRSA_REQ_ORG "My Company"
 set_var EASYRSA_REQ_EMAIL   "my@example.com"
 set_var EASYRSA_REQ_OU      "IT"
+
+set_var EASYRSA_CA_EXPIRE 36500
+set_var EASYRSA_CERT_EXPIRE 36500
 ...
 ```
 

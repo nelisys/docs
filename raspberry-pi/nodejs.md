@@ -4,7 +4,7 @@
 $ sudo apt install -y nodejs
 
 $ node -v
-v10.15.2
+v18.19.0
 
 $ npm -v
 -bash: npm: command not found
@@ -12,5 +12,5 @@ $ npm -v
 $ sudo apt install -y npm
 
 $ npm -v
-5.8.0
+9.2.0
 ```

@@ -3,8 +3,9 @@
 ## Disable Rainbow Splash
 
 ```
-$ sudo vi /boot/config.txt
+$ sudo vi /boot/firmware/config.txt
 ...
+[all]
 disable_splash=1
 ```
 
@@ -74,6 +75,8 @@ show_trash=0
 
 or `.config/pcmanfm/LXDE-pi/desktop-items-0.conf`
 
+or `.config/pcmanfm/LXDE-pi/desktop-items-HDMI-A-1.conf`
+
 ## Hide mouse
 
 ```
@@ -85,6 +88,8 @@ xserver-command=X -nocursor
 ```
 
 ## Auto start Chrome in Kiosk
+
+`.config/lxsession/LXDE-pi/autostart`
 
 ```
 $ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
@@ -100,6 +105,25 @@ $ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
 @xset s off
 @xset -dpms
 @xset s noblank
+```
+
+## Screen Saver
+
+```
+$ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
+...
+@xset s 300
+@xset dpms 300 300 300
+```
+
+## Disable special keys
+
+```
+$ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
+...
+@xmodmap -e "keycode 133 = NoSymbol" # Disable Super (Windows) key
+@xmodmap -e "keycode 37 = NoSymbol"  # Disable Ctrl key
+@xmodmap -e "keycode 64 = NoSymbol"  # Disable Alt key
 ```
 
 ## References
