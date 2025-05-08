@@ -1,16 +1,7 @@
 # nodejs
 
 ```
-$ sudo apt install -y nodejs
+curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
-$ node -v
-v18.19.0
-
-$ npm -v
--bash: npm: command not found
-
-$ sudo apt install -y npm
-
-$ npm -v
-9.2.0
+sudo apt install nodejs
 ```

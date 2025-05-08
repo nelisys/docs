@@ -34,3 +34,25 @@ sudo apt install vim
 ```
 sudo raspi-config nonint do_configure_keyboard us
 ```
+
+## bashrc
+
+```
+# /etc/bash.bashrc
+alias vi='vim'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+unset HISTFILE
+```
+
+## vimrc
+
+```
+" /etc/vim/vimrc
+set autoindent
+set tabstop=4
+set expandtab
+set nohlsearch
+```
