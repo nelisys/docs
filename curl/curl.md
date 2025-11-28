@@ -43,3 +43,13 @@ $ curl --insecure https://192.168.1.1/
 ```console
 $ curl -L ...
 ```
+
+## curl json
+
+```
+curl \
+    -H "X-Requested-With: XMLHttpRequest" \
+    -H "Content-Type: application/json" \
+    -d "{\"username\":\"admin\",\"password\":\"secret\"}" \
+    https://example.com/v1/auth
+```
